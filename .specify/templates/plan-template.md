@@ -18,29 +18,40 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
+**Language/Version**: [e.g., TypeScript 5.x / Node.js 22 LTS or NEEDS CLARIFICATION]
 
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+**Primary Dependencies**: [e.g., React, Vite, Zustand, VitePress, Storybook, Mantine or Radix UI Themes or Lit wrappers, ky, urql, GraphQL Code Generator, Vitest, Playwright]
 
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
+**Storage**: [e.g., browser storage, server APIs, static build artifacts for translations, or N/A]
 
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
+**Testing**: [e.g., Vitest, Playwright with documented page objects, Storybook interaction coverage]
 
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
+**Target Platform**: [e.g., modern desktop browsers in enterprise environments, responsive mobile web, internal docs tooling]
 
-**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]
+**Project Type**: [e.g., frontend monorepo/workspace with apps, packages, docs, and design-system surfaces]
 
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]
+**Performance Goals**: [e.g., map interactions remain responsive, real-time updates stay within agreed freshness budgets, docs/storybook builds stay within CI budget]
 
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]
+**Constraints**: [e.g., pnpm-only installs using latest compatible versions, no manual version pin edits in new package manifests, RTL/LTR parity, long-term maintainability for a 20-year horizon]
 
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Scale/Scope**: [e.g., 2-3 developers, enterprise real-time frontend platform, shared component library, 2D/3D mapping, multiple feature apps]
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- Monorepo decision is explicit: Nx or Turborepo is selected and justified for this feature scope.
+- Runtime stack is explicit: Vite + React + TypeScript by default; TanStack Start requires a written justification tied to routing, data loading, or SSR constraints.
+- State management scope is explicit: Zustand is the default client state layer; any added utility wrappers are documented with ownership and escape hatches.
+- Documentation plan is explicit: VitePress docs and Storybook coverage are updated together, with Storybook integration points to VitePress identified.
+- Internationalization and layout direction are covered: English and Hebrew copy, RTL/LTR behavior, and build-time string aggregation to public static assets are specified.
+- Quality strategy is explicit: Vitest unit coverage, Playwright integration coverage, and page object documentation requirements for affected components are defined.
+- Data transport choices are explicit: ky for REST, urql + codegen for GraphQL, and real-time compatibility requirements for SignalR ASP.NET and GraphQL subscriptions are addressed.
+- Mapping and real-time constraints are explicit when relevant: 2D and 3D map behavior, enterprise real-time expectations, and observable performance budgets are documented.
+- Benchmarking is planned for any technology selection or change that affects runtime, rendering, real-time delivery, or developer workflow.
+- Delivery is sliced into micro-tasks that can pass human review quickly; any task too large for a short MR must be split before implementation starts.
+- Refactoring-only work and new functional additions are separated into distinct micro-tasks, and the plan explains any justified exception.
+- The validation plan explicitly checks for unused or dead code introduced or exposed by the change, and records how that code will be removed or why it must temporarily remain.
 
 ## Project Structure
 
@@ -60,48 +71,37 @@ specs/[###-feature]/
 <!--
   ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
   for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
+  real paths. The delivered plan must not include placeholder package names.
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
-src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+apps/
+├── web/
+├── storybook/
+└── docs/
 
-tests/
-├── contract/
-├── integration/
-└── unit/
+packages/
+├── app-shell/
+├── map-core/
+├── list-view/
+├── form-wrapper/
+├── form-components/
+├── i18n/
+├── api-rest/
+├── api-graphql/
+├── realtime/
+└── test-utils/
 
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
+benchmarks/
+├── rendering/
+├── realtime/
+└── developer-experience/
 
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+specs/
+└── [###-feature-name]/
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: [Document the selected monorepo layout, identify the owning app/package for this feature, and note whether Nx or Turborepo was chosen and why]
 
 ## Complexity Tracking
 
@@ -109,5 +109,5 @@ directories captured above]
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| [e.g., TanStack Start instead of Vite SPA] | [current need] | [why the default baseline is insufficient] |
+| [e.g., additional shared utility around Zustand] | [specific problem] | [why plain Zustand usage is insufficient] |

@@ -18,6 +18,8 @@ description: "Task list template for feature implementation"
 - **[P]**: Can run in parallel (different files, no dependencies)
 - **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
 - Include exact file paths in descriptions
+- Split refactoring tasks from new feature tasks; do not combine cleanup and new behavior in the same task entry.
+- Include explicit cleanup or validation tasks when a change can leave unused or dead code behind.
 
 ## Path Conventions
 
@@ -183,6 +185,7 @@ Examples of foundational tasks (adjust based on your project):
 - Models before services
 - Services before endpoints
 - Core implementation before integration
+- Refactoring tasks complete before the dependent feature-addition tasks begin
 - Story complete before moving to next priority
 
 ### Parallel Opportunities
@@ -248,5 +251,7 @@ With multiple developers:
 - Each user story should be independently completable and testable
 - Verify tests fail before implementing
 - Commit after each task or logical group
+- Prefer separate commits and separate merge requests for refactoring-only work versus new functional additions
+- Validate removal of unused imports, unreachable code, obsolete helpers, and abandoned UI/API paths before closing the task
 - Stop at any checkpoint to validate story independently
 - Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence

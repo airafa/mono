@@ -13,8 +13,16 @@ Define the gates a delivery slice must satisfy before it can move from one envir
 | Dead-code gate | All environments beyond local | No new unused imports, exports, stale selectors, or superseded helpers in the touched slice | Product team lead | Yes |
 | Platform readiness gate | Dev/Integration, staging, production | Required platform capabilities are `available` for the target environment | Platform team | Yes |
 | Contract readiness gate | Dev/Integration, staging, production | Backend and external interface contracts are versioned and accepted | Shared product/backend ownership | Yes |
-| Compliance gate | Staging and production | Required compliance evidence and approvals are attached | Compliance or platform owner | Yes |
-| Benchmark gate | Any non-default tooling or runtime change | Benchmark report stored in-repo and linked from the slice | Product team lead | Yes |
+| Compliance gate | Staging and production | Required compliance evidence and approvals are attached, or an explicit decision records that no named formal regime applies beyond internal controls | Compliance or platform owner | Yes |
+| Secrets gate | Dev/Integration, staging, production | Secrets-management onboarding and access approvals are complete for the target environment | Platform team | Yes |
+| Benchmark gate | Any non-default tooling or runtime change, and any performance-sensitive mapping or realtime slice | Benchmark report stored in-repo and linked from the slice | Product team lead | Yes |
+
+## Current Provisional Policy
+
+- There is no final release policy decision yet.
+- Until a stricter policy is approved, staging and production should treat compliance approval, secrets readiness, and benchmark evidence as mandatory blockers.
+- Observability is important, but it is not yet recorded as a user-confirmed release blocker in the current planning inputs.
+- The absence of a named formal regulatory framework does not remove the need for an explicit approval decision before staging or production.
 
 ## Promotion Flow
 

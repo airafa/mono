@@ -51,7 +51,21 @@ Define the initial architecture and infrastructure baseline for a frontend monor
 **Post-Phase 1 Result**: PASS WITH EXTERNAL FOLLOW-UPS
 
 - The design artifacts define the baseline entities, ownership model, contracts, and readiness flow needed for implementation planning.
-- External follow-ups remain mandatory before implementation tasks begin: compliance/regulatory enumeration, platform capability inventory, backend contract owners, and authentication/authorization details.
+- External follow-ups remain mandatory before implementation tasks begin: named backend contract owners and authentication/authorization details.
+
+## Compliance Refinement
+
+- No concrete external regulatory framework has been identified yet for the MVP baseline.
+- Until a stricter obligation is named, compliance planning is limited to a provisional internal release-control posture rather than a named formal regime.
+- The current provisional release blockers selected for later environments are compliance approval, secrets-management readiness, and benchmark evidence for non-default or performance-sensitive changes.
+- A formal compliance owner and any audit-specific evidence requirements remain unassigned and must be resolved before staging or production tasks are generated.
+
+## Platform Readiness Refinement
+
+- Organizational baselines appear to exist for CI/CD, artifact management, hosting target, and network/access control.
+- Those capabilities are not yet confirmed as onboarded for this repository, so they remain `needs-setup` at the project level rather than fully `available` outside local work.
+- Secrets management and observability readiness remain unconfirmed and require direct platform-team input.
+- The plan can proceed, but implementation tasks that depend on external environments must treat these capabilities as onboarding dependencies, not solved prerequisites.
 
 ## Project Structure
 
@@ -114,6 +128,7 @@ specs/
 
 - The data model defines architecture domains, infrastructure capabilities, environments, dependencies, readiness gaps, release gates, compliance constraints, and owners.
 - The contract set defines the minimum backend, platform, and release-readiness agreements required before implementation slices can be generated safely.
+- The refined readiness contracts now separate organizational capability existence from repository-specific onboarding status.
 - The quickstart flow describes how to turn this plan into repository scaffolding and small follow-on tasks without crossing ownership boundaries.
 
 ## Task Decomposition Preview

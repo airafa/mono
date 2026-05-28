@@ -11,6 +11,7 @@ Turn the approved architecture baseline into the first implementation-ready slic
 - [research.md](./research.md)
 - [data-model.md](./data-model.md)
 - [backend-interface-contracts.md](./contracts/backend-interface-contracts.md)
+- [compliance-readiness-contract.md](./contracts/compliance-readiness-contract.md)
 - [platform-readiness-contract.md](./contracts/platform-readiness-contract.md)
 - [release-readiness-contract.md](./contracts/release-readiness-contract.md)
 
@@ -18,7 +19,7 @@ Turn the approved architecture baseline into the first implementation-ready slic
 
 1. Node.js 22 LTS and pnpm are available locally.
 2. Product, platform, and backend owners are identified.
-3. Compliance and regulatory constraints are enumerated.
+3. The current compliance posture is reviewed and any formal obligations are either documented or explicitly marked absent.
 4. Platform team can state which capabilities already exist versus require setup.
 
 ## Sequence
@@ -26,9 +27,10 @@ Turn the approved architecture baseline into the first implementation-ready slic
 ### 1. Confirm external planning inputs
 
 - Fill the platform readiness matrix for source control, artifact management, secrets, observability, hosting, networking, access control, and environment provisioning.
+- Confirm whether any formal compliance framework applies beyond internal delivery controls.
 - Confirm authentication and authorization ownership.
 - Confirm backend owners for REST, GraphQL, and realtime contracts.
-- Record compliance constraints that must block release or adoption.
+- Record release-blocking controls that must block staging or production.
 
 ### 2. Bootstrap the workspace
 

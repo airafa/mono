@@ -1,0 +1,11 @@
+{
+  "name": "@wsl-ad/release-tools",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./gates.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  }
+}

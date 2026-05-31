@@ -1,0 +1,44 @@
+{
+  "name": "@wsl-ad/monorepo",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "dev": "nx run @wsl-ad/web:dev",
+    "dev:docs": "nx run @wsl-ad/docs:dev",
+    "dev:storybook": "nx run @wsl-ad/storybook:dev",
+    "dev:all": "nx run-many -t dev --projects=@wsl-ad/web,@wsl-ad/docs --parallel",
+    "build": "nx run-many -t build",
+    "lint": "nx run-many -t lint",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "typecheck": "nx run-many -t typecheck",
+    "test": "nx run-many -t test",
+    "test:e2e": "nx run-many -t test:e2e",
+    "validate": "pnpm lint && pnpm typecheck && pnpm test",
+    "validate:unused": "node tools/quality/unused-exports.mjs",
+    "validate:slice": "node tools/quality/validate-slice.mjs",
+    "validate:env": "node tools/quality/validate-environment-readiness.mjs",
+    "validate:release": "node tools/release/validate-release-gates.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
+    "eslint": "^10.4.1",
+    "globals": "^17.6.0",
+    "nx": "^22.7.5",
+    "playwright": "^1.60.0",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.60.0",
+    "vitest": "^4.1.7"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

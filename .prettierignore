@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+storybook-static/
+
+# Coverage
+coverage/
+
+# Lock files
+pnpm-lock.yaml
+
+# Specs and planning docs
+specs/
+.specify/
+.github/
+
+# Nx cache
+.nx/

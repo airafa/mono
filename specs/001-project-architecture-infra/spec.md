@@ -92,6 +92,8 @@ As a delivery team member, I need architecture and infrastructure constraints ca
 - **FR-011**: The system MUST describe the documentation outputs needed so product, engineering, and operations stakeholders can use the baseline without relying on undocumented tribal knowledge.
 - **FR-012**: The system MUST separate refactoring work from new functional additions into distinct micro-tasks whenever both are needed for the same feature.
 - **FR-013**: The system MUST validate and enforce removal of unused or dead code exposed by the change before the work is considered complete.
+- **FR-014**: The system MUST define an agent-assisted delivery workflow that assigns Planner, Implementer, Validator, and Reviewer responsibilities to each micro-task, including required inputs, expected outputs, and explicit handoff points.
+- **FR-015**: The system MUST require an independent validator pass before implementation begins and before a slice is proposed for review, specifically challenging assumptions, task coverage, test adequacy, non-functional gaps, and likely regressions.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -112,6 +114,7 @@ As a delivery team member, I need architecture and infrastructure constraints ca
 - **SC-004**: At least 90% of kickoff questions raised by product, engineering, and operations stakeholders can be answered directly from the specification without an additional discovery session.
 - **SC-005**: The first implementation planning cycle can decompose work into reviewable micro-tasks without introducing new high-severity architecture or infrastructure unknowns.
 - **SC-006**: All mandatory compliance and regulatory constraints affecting architecture, infrastructure, integrations, or release approval are explicitly documented before implementation planning begins.
+- **SC-007**: Every initial implementation slice can name its Planner, Implementer, Validator, and Reviewer gate or evidence requirement without requiring an additional workflow-definition session.
 
 ## Assumptions
 

@@ -44,6 +44,13 @@ hooks:
     description: Auto-commit before task generation
     condition: null
   before_implement:
+  - extension: workflow
+    command: speckit.validator
+    enabled: true
+    optional: false
+    prompt: Run validator before implementation?
+    description: Challenge task assumptions, coverage, and gate readiness before implementation starts
+    condition: null
   - extension: git
     command: speckit.git.commit
     enabled: true
@@ -108,6 +115,13 @@ hooks:
     description: Auto-commit after implementation planning
     condition: null
   after_tasks:
+  - extension: workflow
+    command: speckit.validator
+    enabled: true
+    optional: true
+    prompt: Run validator on the generated task list?
+    description: Challenge the generated tasks for assumption gaps, ordering issues, and missing quality work
+    condition: null
   - extension: git
     command: speckit.git.commit
     enabled: true
@@ -116,6 +130,13 @@ hooks:
     description: Auto-commit after task generation
     condition: null
   after_implement:
+  - extension: workflow
+    command: speckit.validator
+    enabled: true
+    optional: true
+    prompt: Run validator on the implemented slice before review?
+    description: Challenge the changed slice for likely bugs, missing tests, and release-gate gaps
+    condition: null
   - extension: git
     command: speckit.git.commit
     enabled: true

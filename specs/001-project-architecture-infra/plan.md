@@ -8,7 +8,7 @@
 
 ## Summary
 
-Define the initial architecture and infrastructure baseline for a frontend monorepo that will support a primary web application, shared platform packages, documentation, design-system coverage, and future real-time and mapping features. The plan selects Nx on top of pnpm, keeps the runtime baseline on Vite + React + TypeScript, formalizes four environments, establishes product-versus-platform ownership boundaries, and creates the interface and readiness contracts needed to break follow-on work into small implementation slices.
+Define the initial architecture and infrastructure baseline for a frontend monorepo that will support a primary web application, shared platform packages, documentation, design-system coverage, and future real-time and mapping features. The plan selects Nx on top of pnpm, keeps the runtime baseline on Vite + React + TypeScript, formalizes four environments, establishes product-versus-platform ownership boundaries, creates the interface and readiness contracts needed to break follow-on work into small implementation slices, and defines a Planner -> Implementer -> Validator -> Reviewer workflow for those slices.
 
 ## Technical Context
 
@@ -48,10 +48,10 @@ Define the initial architecture and infrastructure baseline for a frontend monor
 - Delivery slicing is explicit: follow-on work will be decomposed into small reviewable slices, with refactors separated from feature additions.
 - Dead-code validation is explicit: lint, TypeScript unused checks, and a repo-wide unused export audit will be part of slice completion.
 
-**Post-Phase 1 Result**: PASS WITH EXTERNAL FOLLOW-UPS
+**Post-Phase 1 Result**: PASS FOR LOCAL-ONLY PLANNING, BLOCKED FOR DEPENDENT IMPLEMENTATION
 
 - The design artifacts define the baseline entities, ownership model, contracts, and readiness flow needed for implementation planning.
-- External follow-ups remain mandatory before implementation tasks begin: named backend contract owners and authentication/authorization details.
+- External follow-ups remain mandatory before implementation tasks begin beyond local-only bootstrap work: named backend contract owners, authentication/authorization ownership, release-control ownership, and platform onboarding ownership.
 
 ## Compliance Refinement
 
@@ -65,7 +65,7 @@ Define the initial architecture and infrastructure baseline for a frontend monor
 - Organizational baselines appear to exist for CI/CD, artifact management, hosting target, and network/access control.
 - Those capabilities are not yet confirmed as onboarded for this repository, so they remain `needs-setup` at the project level rather than fully `available` outside local work.
 - Secrets management and observability readiness remain unconfirmed and require direct platform-team input.
-- The plan can proceed, but implementation tasks that depend on external environments must treat these capabilities as onboarding dependencies, not solved prerequisites.
+- The plan can proceed only for local-only bootstrap and planning slices. Implementation tasks that depend on external environments, transport contracts, release-control decisions, or platform onboarding remain blocked until those prerequisites are explicitly resolved.
 
 ## Project Structure
 
@@ -76,9 +76,11 @@ specs/001-project-architecture-infra/
 ├── plan.md
 ├── research.md
 ├── data-model.md
+├── risk-register.md
 ├── quickstart.md
 ├── contracts/
 │   ├── backend-interface-contracts.md
+│   ├── compliance-readiness-contract.md
 │   ├── platform-readiness-contract.md
 │   └── release-readiness-contract.md
 └── tasks.md
@@ -140,6 +142,22 @@ specs/
 5. Define backend API and realtime client contracts with owning backend teams.
 6. Establish baseline quality gates: Vitest, Playwright, page objects, linting, and dead-code detection.
 7. Capture initial benchmark baselines for rendering, realtime, and developer workflow.
+
+## Agent Workflow Template
+
+| Role | Primary Responsibility | Required Inputs | Exit Gate | Handoff |
+|------|------------------------|-----------------|-----------|---------|
+| Planner | Convert approved architecture decisions into reviewable micro-tasks with explicit scope boundaries | `spec.md`, `plan.md`, `research.md`, contracts, readiness gaps, open assumptions | Each slice names affected paths, owners, tests/docs/benchmarks impact, and known assumptions | Send the slice definition to Validator before implementation starts |
+| Implementer | Execute one validated slice without widening scope or mixing refactor-only work with new behavior | Validated task, affected contracts, acceptance criteria, applicable release gates | Code/docs/tests/page objects/config changes are complete and local validation evidence exists | Send the changed slice and validation evidence to Validator |
+| Validator | Challenge assumptions and proposed or implemented work for gaps, bugs, missing tests, and release-risk omissions | `spec.md`, `plan.md`, `tasks.md`, contracts, local validation evidence, changed files | Emit `PASS`, `WARN`, or `BLOCKED` with concrete findings and required follow-ups | `BLOCKED` returns to Planner or Implementer; `PASS` or `WARN` moves to Reviewer |
+| Reviewer | Decide merge readiness for a narrow slice and confirm follow-up actions are explicit | Validator report, diff summary, test evidence, release-gate evidence | Approve the slice, request changes, or send it back for re-planning | Return to Planner for scope issues or Implementer for local fixes |
+
+### Workflow Gates
+
+1. **Planning Gate**: Planner cannot hand off a slice until scope, ownership, file paths, and quality impacts are explicit.
+2. **Pre-Implementation Validation Gate**: Validator must challenge the slice definition before `/speckit.implement` starts.
+3. **Implementation Completion Gate**: Implementer must provide executable validation evidence, docs impact, and dead-code cleanup status before handoff.
+4. **Review Readiness Gate**: Reviewer only sees slices that already passed validator challenge or include explicit warnings with accepted follow-up actions.
 
 ## Complexity Tracking
 

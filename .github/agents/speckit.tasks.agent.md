@@ -5,6 +5,10 @@ handoffs:
     agent: speckit.analyze
     prompt: Run a project analysis for consistency
     send: true
+  - label: Validate Task Plan
+    agent: speckit.validator
+    prompt: Challenge the task breakdown, assumptions, dependency order, and quality gates before implementation
+    send: true
   - label: Implement Project
     agent: speckit.implement
     prompt: Start the implementation in phases

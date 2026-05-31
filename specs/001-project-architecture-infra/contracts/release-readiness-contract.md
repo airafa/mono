@@ -21,7 +21,7 @@ Define the gates a delivery slice must satisfy before it can move from one envir
 
 - There is no final release policy decision yet.
 - Until a stricter policy is approved, staging and production should treat compliance approval, secrets readiness, and benchmark evidence as mandatory blockers.
-- Observability is important, but it is not yet recorded as a user-confirmed release blocker in the current planning inputs.
+- Observability remains a mandatory platform-readiness prerequisite before promotion, even though it is currently enforced through the platform readiness gate rather than as a separate named gate in this release contract.
 - The absence of a named formal regulatory framework does not remove the need for an explicit approval decision before staging or production.
 
 ## Promotion Flow

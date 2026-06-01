@@ -19,3 +19,7 @@ specs/
 
 # Nx cache
 .nx/
+
+# VitePress build/cache
+**/.vitepress/cache/
+**/.vitepress/dist/

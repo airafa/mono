@@ -36,6 +36,10 @@ pnpm-debug.log*
 # Nx
 .nx/
 
+# VitePress
+**/.vitepress/cache/
+**/.vitepress/dist/
+
 # Temporary
 *.tmp
 *.swp
@@ -48,3 +52,6 @@ test-results/
 # Lighthouse temp Chrome profiles
 C:\\Users\\*/
 lighthouse-results/
+
+# Lighthouse reports (regeneratable)
+benchmarks/rendering/lighthouse/

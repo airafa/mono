@@ -31,7 +31,7 @@ Shared chunks (loaded by all variants): `index.js` (62.08 kB gz), `floating-ui` 
 | Production build time     | 506ms                     |
 | Total modules transformed | 1,879                     |
 | Unit tests                | 39 passing                |
-| Playwright e2e tests      | 41 tests across 3 files   |
+| Playwright e2e tests      | 45 tests across 3 files   |
 | TypeScript                | 6/6 packages pass         |
 | ESLint                    | 6/6 packages pass         |
 | Storybook stories         | 8 (4 variants × 2 themes) |

@@ -47,7 +47,8 @@ const gates = [
         'pnpm --filter "@wsl-ad/ui-*" --filter @wsl-ad/app-shell --filter @wsl-ad/web typecheck',
       );
       const test = runCommand('pnpm --filter "@wsl-ad/ui-*" --filter @wsl-ad/web test');
-      return lint && typecheck && test ? 'pass' : 'fail';
+      const stylelint = runCommand('pnpm exec stylelint "**/*.css"');
+      return lint && typecheck && test && stylelint ? 'pass' : 'fail';
     },
   },
   {
@@ -55,6 +56,15 @@ const gates = [
     appliesTo: ['dev-integration', 'staging', 'production'],
     check: () => {
       return existsSync('apps/docs/docs/design-system/app-shell.md') ? 'pass' : 'fail';
+    },
+  },
+  {
+    name: 'E2E Gate',
+    appliesTo: ['staging', 'production'],
+    check: () => {
+      return runCommand('pnpm exec playwright test --config playwright.config.ts')
+        ? 'pass'
+        : 'fail';
     },
   },
   {

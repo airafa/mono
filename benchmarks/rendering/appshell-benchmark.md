@@ -46,16 +46,16 @@
 
 ## 2. Build & Quality Metrics
 
-| Metric                    | Value                                                                                           |
-| ------------------------- | ----------------------------------------------------------------------------------------------- |
-| Production build time     | 506ms                                                                                           |
-| Total modules transformed | 1,879                                                                                           |
-| Unit tests                | 39 passing (7 per variant + 5 app-shell + 6 web)                                                |
-| Test files                | 7 passing                                                                                       |
-| TypeScript                | 6/6 packages pass `tsc --noEmit`                                                                |
-| ESLint                    | 6/6 packages pass lint                                                                          |
-| Storybook stories         | 4 stories × 2 themes (Light + Dark) = 8 story variants                                          |
-| Playwright e2e tests      | 41 tests across 3 files (variant switching, layout LTR+RTL, theme toggle + data-theme + SC-003) |
+| Metric                    | Value                                                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Production build time     | 506ms                                                                                                         |
+| Total modules transformed | 1,879                                                                                                         |
+| Unit tests                | 39 passing (7 per variant + 5 app-shell + 6 web)                                                              |
+| Test files                | 7 passing                                                                                                     |
+| TypeScript                | 6/6 packages pass `tsc --noEmit`                                                                              |
+| ESLint                    | 6/6 packages pass lint                                                                                        |
+| Storybook stories         | 4 stories × 2 themes (Light + Dark) = 8 story variants                                                        |
+| Playwright e2e tests      | 45 tests across 3 files (variant switching, layout LTR+RTL, theme toggle + data-theme + SC-003 + SC-002 perf) |
 
 ---
 

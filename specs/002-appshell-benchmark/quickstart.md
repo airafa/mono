@@ -53,9 +53,41 @@ pnpm --filter @wsl-ad/web build
 
 # Measure bundle sizes
 ls -la apps/web/dist/assets/*.js | awk '{print $5, $9}'
+```
 
-# Run Lighthouse (requires Chrome)
-npx lighthouse http://localhost:4173/?ui=mui --output=json --output-path=./benchmarks/rendering/lighthouse-mui.json
+## Lighthouse Benchmarks
+
+Lighthouse CLI is installed as a workspace dev dependency (`lighthouse@13.3.0`).
+
+```bash
+# Start the dev server on a fixed port
+pnpm --filter @wsl-ad/web dev --port 4173
+
+# Run Lighthouse for all 4 variants
+pnpm lighthouse
+
+# Run for a single variant
+pnpm lighthouse --variant mui
+
+# Run against a custom URL
+pnpm lighthouse --url http://localhost:5173
+```
+
+HTML and JSON reports are saved to `benchmarks/rendering/lighthouse/`.
+
+## Playwright E2E Tests
+
+Playwright auto-starts a dev server on port 4173 via the `webServer` config:
+
+```bash
+# Run headless
+pnpm exec playwright test
+
+# Run with visible browser
+pnpm exec playwright test --headed
+
+# Run with UI mode
+pnpm exec playwright test --ui
 ```
 
 ## Environment Configuration
@@ -67,3 +99,14 @@ VITE_UI_VARIANT=mui
 ```
 
 Valid values: `mui`, `mantine`, `radix`, `lit`
+
+## Release Gate Validation
+
+The release gates script validates quality, documentation, and benchmark readiness:
+
+```bash
+# Run all gates (Quality, Documentation, Benchmark, Dead Code)
+node tools/release/validate-release-gates.mjs --env dev-integration
+```
+
+Gates perform real checks: lint + typecheck + test (Quality), file existence (Documentation/Benchmark), and unused exports scan (Dead Code).

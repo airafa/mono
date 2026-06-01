@@ -1,0 +1,38 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 var(--mantine-spacing-md);
+  background: var(--mantine-color-body);
+  border-block-end: 1px solid var(--mantine-color-default-border);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  padding-block-start: var(--mantine-spacing-md);
+  background: var(--mantine-color-body);
+  border-inline-end: 1px solid var(--mantine-color-default-border);
+}
+
+.content {
+  flex: 1;
+  padding: var(--mantine-spacing-lg);
+}
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+}
+
+.navButton {
+  margin-block-end: var(--mantine-spacing-xs);
+}

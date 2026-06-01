@@ -10,6 +10,8 @@ export default defineConfig({
       { text: 'Platform', link: '/platform/readiness-matrix' },
       { text: 'Delivery', link: '/delivery/release-gates' },
       { text: 'Design System', link: '/design-system/' },
+      { text: 'Benchmarks', link: '/benchmarks/' },
+      { text: 'Testing', link: '/testing/page-objects' },
       { text: 'Getting Started', link: '/getting-started/bootstrap' },
     ],
     sidebar: {
@@ -54,6 +56,25 @@ export default defineConfig({
           items: [
             { text: 'Bootstrap', link: '/getting-started/bootstrap' },
             { text: 'Verification', link: '/getting-started/verification' },
+          ],
+        },
+      ],
+      '/design-system/': [
+        {
+          text: 'Design System',
+          items: [
+            { text: 'App Shell', link: '/design-system/app-shell' },
+            { text: 'Benchmark Feature', link: '/design-system/appshell-benchmark-feature' },
+            { text: 'Benchmark Research', link: '/design-system/appshell-benchmark-research' },
+          ],
+        },
+      ],
+      '/benchmarks/': [
+        {
+          text: 'Benchmarks',
+          items: [
+            { text: 'Overview', link: '/benchmarks/' },
+            { text: 'App Shell', link: '/benchmarks/app-shell' },
           ],
         },
       ],

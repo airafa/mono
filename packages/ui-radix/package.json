@@ -1,0 +1,31 @@
+{
+  "name": "@wsl-ad/ui-radix",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./appShell": "./src/appShell/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@radix-ui/themes": "*",
+    "@radix-ui/react-icons": "*",
+    "@wsl-ad/app-shell": "workspace:*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "@testing-library/react": "*",
+    "@testing-library/jest-dom": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "jsdom": "*"
+  }
+}

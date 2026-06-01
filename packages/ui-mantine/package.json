@@ -1,0 +1,34 @@
+{
+  "name": "@wsl-ad/ui-mantine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./appShell": "./src/appShell/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@mantine/core": "*",
+    "@mantine/hooks": "*",
+    "@wsl-ad/app-shell": "workspace:*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "postcss": "*",
+    "postcss-preset-mantine": "*",
+    "postcss-simple-vars": "*",
+    "@testing-library/react": "*",
+    "@testing-library/jest-dom": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "jsdom": "*"
+  }
+}

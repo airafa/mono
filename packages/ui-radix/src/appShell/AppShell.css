@@ -1,0 +1,74 @@
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-shell-inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.app-shell-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 var(--space-4);
+  background: var(--color-background);
+  border-block-end: 1px solid var(--gray-6);
+}
+
+.app-shell-body {
+  display: flex;
+  flex: 1;
+}
+
+.app-shell-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  padding-block-start: var(--space-3);
+  background: var(--color-background);
+  border-inline-end: 1px solid var(--gray-6);
+}
+
+.app-shell-content {
+  flex: 1;
+  padding: var(--space-5);
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  margin-block-end: var(--space-2);
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: var(--radius-2);
+}
+
+.nav-button:hover {
+  background: var(--gray-4);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  font-size: 1.25rem;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: var(--radius-2);
+}
+
+.theme-toggle:hover {
+  background: var(--gray-4);
+}

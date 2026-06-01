@@ -14,7 +14,8 @@
 - MUI's CSS theme variables mode (`createTheme({ cssVariables: true })`) generates CSS custom properties at build time, eliminating runtime style recalculation for theme switches.
 - Theme switching between light/dark is achieved by toggling a class (`.light`/`.dark`) on the root element — no runtime CSS-in-JS needed for the switch itself.
 - MUI still uses Emotion for initial style generation, but with `cssVariables: true`, styles are static CSS referencing variables. The Emotion overhead becomes a one-time build cost.
-- Bundle impact: MUI is the heaviest of the 4 options (~80-100kB gzipped for core + icons).
+- **Post-implementation finding**: Emotion injects new `<style>` tags when it encounters component states not yet rendered (e.g., toggling to dark mode triggers CssBaseline to inject dark-mode styles). MUI cannot achieve true zero-runtime CSS-in-JS on theme toggle. SC-003 was updated to exempt MUI.
+- Bundle impact: MUI measured at ~53kB gzipped JS, zero external CSS (lighter than initial estimate).
 
 **Alternatives considered**:
 - Pigment CSS: rejected — alpha status, unstable Vite plugin, not recommended for production.
@@ -75,16 +76,17 @@
 - Lit uses native browser APIs: Custom Elements, Shadow DOM, and constructable stylesheets.
 - Zero runtime CSS-in-JS by definition — styles are native CSS declared in `static styles` using `css` tagged template literals, compiled to constructable stylesheets.
 - Theme switching: Use CSS custom properties on the host element or document root. Shadow DOM piercing via `::part()` or CSS variables for theming.
-- React interop: `@lit/react` `createComponent()` wraps Lit elements as React components with proper prop/event mapping.
-- Smallest possible JS bundle — Lit itself is ~5kB gzipped.
+- React interop: **Post-implementation decision**: `@lit/react` `createComponent()` was NOT used. The React wrapper (`AppShellWrapper.tsx`) is a plain React component with inline styles that implements the `AppShellProps` interface directly. The Lit custom element (`wsl-app-shell`) is internal and not exported from the package barrel.
+- Smallest possible JS bundle — measured at 0.75kB gzipped (far smaller than initial estimate).
 
 **Alternatives considered**:
 - Lit + Shoelace (web component library): rejected — adds dependency weight and the goal is to benchmark Lit's native approach.
 - Stencil: rejected — different compilation model, Lit is the standard.
+- `@lit/react` `createComponent()`: not used in final implementation — plain React wrapper was simpler and avoided Shadow DOM complexities in tests.
 
 **Tree-shaking**: Each Lit component is a standalone custom element. Only imported/registered elements are bundled. Maximum tree-shaking by design.
 
-**Bundle impact**: Smallest (~5-10kB gzipped for Lit + app shell components).
+**Bundle impact**: Smallest — measured at 0.75kB gzipped JS, zero CSS.
 
 ---
 

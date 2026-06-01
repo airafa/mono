@@ -5,15 +5,19 @@
 The WSL-AD design system is documented through two integrated surfaces:
 
 - **This documentation site** (VitePress) — architecture guidance, usage constraints, and integration patterns.
-- **[Storybook](/storybook/)** — interactive component catalog with visual testing and interaction coverage.
+- **Storybook** — interactive component catalog with visual testing and interaction coverage. Run locally with `pnpm --filter @wsl-ad/storybook dev`.
 
 ## Packages
 
-| Package                    | Purpose                   | Storybook Coverage |
-| -------------------------- | ------------------------- | ------------------ |
-| `@wsl-ad/ui-list`          | Table and card list views | Planned            |
-| `@wsl-ad/ui-forms`         | Form layout utilities     | Planned            |
-| `@wsl-ad/ui-form-controls` | Documented form controls  | Planned            |
+| Package                    | Purpose                               | Storybook Coverage |
+| -------------------------- | ------------------------------------- | ------------------ |
+| `@wsl-ad/ui-mui`           | MUI variant (Emotion + CSS Variables) | 2 stories          |
+| `@wsl-ad/ui-mantine`       | Mantine variant (CSS Modules)         | 2 stories          |
+| `@wsl-ad/ui-radix`         | Radix variant (Static CSS)            | 2 stories          |
+| `@wsl-ad/ui-lit`           | Lit variant (Inline Styles)           | 2 stories          |
+| `@wsl-ad/ui-list`          | Table and card list views             | Planned            |
+| `@wsl-ad/ui-forms`         | Form layout utilities                 | Planned            |
+| `@wsl-ad/ui-form-controls` | Documented form controls              | Planned            |
 
 ## Principles
 

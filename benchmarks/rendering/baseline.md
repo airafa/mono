@@ -1,18 +1,24 @@
 # Rendering Benchmark Baseline
 
-**Recorded**: Not yet measured
-**Status**: Awaiting initial UI component implementation
+**Recorded**: 2025-07-14
+**Status**: Initial app shell benchmark complete
 
 ## Measurements
 
-No baseline measurements available yet. The rendering benchmark baseline will be recorded after:
+Initial bundle size measurements for the 4 app shell framework variants are recorded in [appshell-benchmark.md](./appshell-benchmark.md).
 
-1. Initial UI components are implemented in `packages/ui-list`, `packages/ui-forms`, and `packages/ui-form-controls`.
-2. The primary web app has a functional app shell with navigation.
-3. Vitest bench or equivalent measurement tooling is configured.
+### Summary
+
+| Variant | JS Gzip Size |
+| ------- | ------------ |
+| Lit     | 0.74 kB      |
+| Radix   | 9.82 kB      |
+| Mantine | 24.60 kB     |
+| MUI     | 53.44 kB     |
 
 ## Next Steps
 
-- Implement initial UI components
-- Configure benchmark measurement tooling
-- Record first measurements and update this file
+- Record Lighthouse FCP/LCP metrics per variant
+- Measure theme toggle latency (time to repaint)
+- Add component-level rendering benchmarks for ui-list, ui-forms
+- Configure Vitest bench for microbenchmarks

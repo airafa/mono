@@ -13,11 +13,11 @@ Implement the app shell component in 4 UI framework variants (MUI, Mantine, Radi
 **Language/Version**: TypeScript 5.x / Node.js 22 LTS
 
 **Primary Dependencies**:
-- Shared: React 18+, Vite 6+, Vitest, Playwright, Storybook
-- MUI variant: `@mui/material`, `@emotion/react`, `@emotion/styled` (with `cssVariables: true` for zero-runtime theme switching)
+- Shared: React 18+, Vite 6+, Vitest, Playwright, Storybook, Lighthouse CLI
+- MUI variant: `@mui/material`, `@emotion/react`, `@emotion/styled` (with `cssVariables: true` for zero-runtime theme switching; Emotion still injects `<style>` tags for new component states)
 - Mantine variant: `@mantine/core`, `@mantine/hooks`, `postcss-preset-mantine`, `postcss-simple-vars`
 - Radix variant: `@radix-ui/themes`
-- Lit variant: `lit`, `@lit/react`
+- Lit variant: `lit` (React wrapper component with inline styles; `@lit/react` is NOT used — the Lit custom element is internal)
 
 **Storage**: N/A (no persistent storage; theme preference held in React state)
 
@@ -28,7 +28,7 @@ Implement the app shell component in 4 UI framework variants (MUI, Mantine, Radi
 **Project Type**: Frontend monorepo (pnpm workspaces + Nx) with apps, packages, docs, and design-system surfaces
 
 **Performance Goals**: 
-- Zero runtime CSS-in-JS (no `<style>` injection post-initial-load)
+- Zero runtime CSS-in-JS (no `<style>` injection post-initial-load) for Mantine, Radix, and Lit. MUI is exempt — Emotion injects `<style>` tags for newly encountered component states.
 - Theme switch < 100ms with no layout shift
 - Each variant's app shell JS chunk < 100kB gzipped (target: MUI ~80kB, Mantine ~50kB, Radix ~35kB, Lit ~10kB)
 - Lighthouse Performance score > 90 for each variant

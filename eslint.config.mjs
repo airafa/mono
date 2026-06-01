@@ -30,6 +30,8 @@ export default tseslint.config(
       'storybook-static/',
       '*.min.js',
       '.nx/',
+      '**/.vitepress/dist/',
+      '**/.vitepress/cache/',
     ],
   },
 );

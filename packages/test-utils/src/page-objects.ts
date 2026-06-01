@@ -11,3 +11,5 @@ export function createPageObject(page: Page, rootSelector: string): PageObject {
     root: page.locator(rootSelector),
   };
 }
+
+export { AppShellPageObject } from './page-objects/app-shell.js';

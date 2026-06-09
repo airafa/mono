@@ -26,7 +26,7 @@ const row = (
     <td
       style={{
         padding: '12px 8px',
-        fontFamily,
+        fontFamily: family,
         fontSize: size,
         fontWeight: weight,
         lineHeight,

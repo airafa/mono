@@ -65,6 +65,18 @@ importers:
 
   apps/storybook:
     dependencies:
+      '@mantine/core':
+        specifier: '*'
+        version: 9.2.2(@mantine/hooks@9.2.2(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@mantine/hooks':
+        specifier: '*'
+        version: 9.2.2(react@19.2.6)
+      '@mui/material':
+        specifier: '*'
+        version: 9.0.1(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@radix-ui/themes':
+        specifier: '*'
+        version: 3.3.0(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@wsl-ad/app-shell':
         specifier: workspace:*
         version: link:../../packages/app-shell
@@ -83,6 +95,9 @@ importers:
       '@wsl-ad/ui-radix':
         specifier: workspace:*
         version: link:../../packages/ui-radix
+      '@wsl-ad/ui-tokens':
+        specifier: workspace:*
+        version: link:../../packages/ui-tokens
       react:
         specifier: '*'
         version: 19.2.6
@@ -90,6 +105,15 @@ importers:
         specifier: '*'
         version: 19.2.6(react@19.2.6)
     devDependencies:
+      '@fontsource/almarai':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/inter':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/rubik':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@storybook/addon-essentials':
         specifier: ^8.6.14
         version: 8.6.14(@types/react@19.2.15)(storybook@8.6.18(prettier@3.8.3))
@@ -1112,6 +1136,15 @@ packages:
 
   '@floating-ui/utils@0.2.11':
     resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
+
+  '@fontsource/almarai@5.2.8':
+    resolution: {integrity: sha512-Y214OHk6rYYCDIwjpVM6Y4iaPIH7JSSflF7xmE5ejKZkhVdMGwhgqIdo4kPMgoaVfo+XL5qeOzGQF9DTnZS9mg==}
+
+  '@fontsource/inter@5.2.8':
+    resolution: {integrity: sha512-P6r5WnJoKiNVV+zvW2xM13gNdFhAEpQ9dQJHt3naLvfg+LkF2ldgSLiF4T41lf1SQCM9QmkqPTn4TH568IRagg==}
+
+  '@fontsource/rubik@5.2.8':
+    resolution: {integrity: sha512-PIc8QR7FqWPcYhbdRiGff56vQlKqg/ytES1YqecSq1GkgxiH4TBshrFvDEOZ9JonUF9m1qQ+qXxJj7wD5zgXEw==}
 
   '@formatjs/ecma402-abstract@2.3.6':
     resolution: {integrity: sha512-HJnTFeRM2kVFVr5gr5kH1XP6K0JcJtE7Lzvtr3FS/so5f1kpsqqqxy5JF+FRaO6H2qmcMfAUIox7AJteieRtVw==}
@@ -6618,6 +6651,12 @@ snapshots:
       tabbable: 6.4.0
 
   '@floating-ui/utils@0.2.11': {}
+
+  '@fontsource/almarai@5.2.8': {}
+
+  '@fontsource/inter@5.2.8': {}
+
+  '@fontsource/rubik@5.2.8': {}
 
   '@formatjs/ecma402-abstract@2.3.6':
     dependencies:

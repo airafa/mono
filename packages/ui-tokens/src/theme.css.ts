@@ -149,11 +149,13 @@ export const expressiveThemeClass = createTheme(vars, {
   motion: {
     duration: {
       ...tokens.motion.duration,
-      normal: expressiveOverrides.motion.duration.normal,
+      normal: expressiveOverrides.motion.duration.normal, // 500ms M3 default spatial
+      fast: expressiveOverrides.motion.duration.fast, // 350ms M3 fast spatial
+      slow: expressiveOverrides.motion.duration.slow, // 650ms M3 slow spatial
     },
     easing: {
       ...tokens.motion.easing,
-      standard: expressiveOverrides.motion.easing.standard,
+      standard: expressiveOverrides.motion.easing.standard, // M3 expressive spatial — bouncy overshoot
     },
   },
   radius: {

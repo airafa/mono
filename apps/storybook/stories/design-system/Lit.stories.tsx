@@ -62,6 +62,7 @@ function LitDesignSystem({ themeMode }: { themeMode: 'light' | 'dark' | 'express
         background: c.surface,
         minHeight: '100vh',
         fontFamily: 'var(--font-body-family, "Rubik", sans-serif)',
+        fontSize: 14,
         color: c.onSurface,
       }}
     >
@@ -273,12 +274,23 @@ export function getLitTokenProperties(mode: ThemeMode): CssPropertyMap {
 
       {/* ── LIVE SHELL ── */}
       {sectionTitle('Live AppShell')}
-      <AppShell logo={Logo} navItems={navItems} themeMode={themeMode} onThemeToggle={() => {}}>
-        <h2 style={{ fontFamily: '"Almarai", sans-serif', fontWeight: 700 }}>
-          Lit Shell — {themeMode}
-        </h2>
-        <p>Body text rendered via CSS custom properties from the token adapter.</p>
-      </AppShell>
+      <div
+        style={{
+          position: 'relative',
+          transform: 'scale(1)',
+          height: 500,
+          overflow: 'hidden',
+          borderRadius: 8,
+          border: '1px solid rgba(0,0,0,0.1)',
+        }}
+      >
+        <AppShell logo={Logo} navItems={navItems} themeMode={themeMode} onThemeToggle={() => {}}>
+          <h2 style={{ fontFamily: '"Almarai", sans-serif', fontWeight: 700 }}>
+            Lit Shell — {themeMode}
+          </h2>
+          <p>Body text rendered via CSS custom properties from the token adapter.</p>
+        </AppShell>
+      </div>
     </div>
   );
 }

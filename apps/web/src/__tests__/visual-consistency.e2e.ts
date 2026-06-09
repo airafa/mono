@@ -46,7 +46,7 @@ async function captureVariantScreenshot(
   // Wait for network and rendering to fully settle (no hard-coded timeout)
   await page.waitForLoadState('networkidle');
 
-  return await page.screenshot({ fullPage: true });
+  return await page.screenshot({ fullPage: false });
 }
 
 test.describe('Visual Consistency Across UI Variants', () => {
@@ -98,6 +98,13 @@ test.describe('Visual Consistency Across UI Variants', () => {
           await page.waitForSelector('[data-testid="app-shell"]');
           await page.evaluate(() => document.fonts.ready);
           await page.waitForLoadState('networkidle');
+
+          // Hide scrollbars before measuring layout — we're testing variant
+          // layout consistency, not OS scrollbar behaviour (which differs
+          // between headed and headless Chromium).
+          await page.evaluate(() => {
+            document.documentElement.style.overflow = 'hidden';
+          });
 
           const appShell = new AppShellPageObject(page);
 

@@ -34,6 +34,17 @@ function MuiAppShellDemo({ themeMode: initialTheme }: { themeMode: ThemeMode }) 
 const meta: Meta = {
   title: 'AppShell/MUI',
   component: MuiAppShellDemo,
+  decorators: [
+    (Story) => (
+      // transform creates a new containing block that traps position:fixed
+      // elements inside the Storybook canvas instead of the browser viewport
+      <div
+        style={{ position: 'relative', transform: 'scale(1)', height: '100vh', overflow: 'auto' }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;

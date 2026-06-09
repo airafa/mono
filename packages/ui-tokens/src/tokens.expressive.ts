@@ -7,10 +7,21 @@
  * CSS selectors (not via CSS vars), because multi-stop rgba gradients cannot
  * be interpolated through CSS custom properties.
  *
- * Design rationale: Gemini Visual Design Language (design.google/library/gemini-ai-visual-design)
- *   - Heavy rounding signals warmth, harmony, playful optimism
- *   - Kinetic anticipate/release curves give responsiveness and intelligence
- *   - Gradient surfaces = directional energy, not static decoration
+ * Motion values follow the official M3 Expressive web conversion table:
+ * https://m3.material.io/styles/motion/overview/specs#web-convert-springs-to-curves
+ *
+ * M3 Expressive motion uses spring-physics with overshoot (spatial) and smooth
+ * settle (effects). Values > 1.0 in the cubic-bezier produce the characteristic
+ * bounce that makes interactions feel alive and fluid.
+ *
+ * 7 Expressive Tactics (m3.material.io/blog/building-with-m3-expressive):
+ *   1. Use a variety of shapes — mix round + square for visual tension
+ *   2. Apply rich and nuanced colors — primary/secondary/tertiary contrast
+ *   3. Guide attention with typography — emphasized text styles
+ *   4. Contain content for emphasis — grouping with brightest surfaces
+ *   5. Add fluid and natural motion — spring physics, shape morph
+ *   6. Leverage component flexibility — adapt to context
+ *   7. Combine tactics to create hero moments — 1–2 per product
  */
 
 export interface ExpressiveOverrides {
@@ -22,12 +33,26 @@ export interface ExpressiveOverrides {
   };
   motion: {
     easing: {
-      /** Replaces standard easing — kinetic feel over smooth */
+      /** M3 Expressive default spatial — bouncy overshoot for movement/size/rotation */
       standard: string;
+      /** M3 Expressive fast spatial — quick bounce for small components */
+      fastSpatial: string;
+      /** M3 Expressive slow spatial — gentle bounce for full-screen animations */
+      slowSpatial: string;
+      /** M3 Expressive default effects — smooth settle for color/opacity changes */
+      effects: string;
+      /** M3 Expressive fast effects — quick settle for small state changes */
+      fastEffects: string;
     };
     duration: {
-      /** Slightly slower than base 200ms — feels deliberate */
+      /** M3 Expressive default spatial duration */
       normal: string;
+      /** M3 Expressive fast spatial duration — small components */
+      fast: string;
+      /** M3 Expressive slow spatial duration — full-screen transitions */
+      slow: string;
+      /** M3 Expressive default effects duration */
+      effects: string;
     };
   };
   elevation: {
@@ -47,10 +72,18 @@ export const expressiveOverrides = {
   },
   motion: {
     easing: {
-      standard: 'cubic-bezier(0.36, 0, 0.66, -0.56)', // anticipate curve
+      // M3 Expressive web conversion table (m3.material.io/styles/motion/overview/specs)
+      standard: 'cubic-bezier(0.38, 1.21, 0.22, 1.00)', // default spatial — bouncy overshoot
+      fastSpatial: 'cubic-bezier(0.42, 1.67, 0.21, 0.90)', // fast spatial — quicker bounce
+      slowSpatial: 'cubic-bezier(0.39, 1.29, 0.35, 0.98)', // slow spatial — gentle bounce
+      effects: 'cubic-bezier(0.34, 0.80, 0.34, 1.00)', // default effects — smooth, no overshoot
+      fastEffects: 'cubic-bezier(0.31, 0.94, 0.34, 1.00)', // fast effects — quick settle
     },
     duration: {
-      normal: '250ms',
+      normal: '500ms', // M3 default spatial
+      fast: '350ms', // M3 fast spatial
+      slow: '650ms', // M3 slow spatial
+      effects: '200ms', // M3 default effects
     },
   },
   elevation: {

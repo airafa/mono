@@ -48,11 +48,13 @@ test.describe('AppShell Layout', () => {
 
       test('sidebar is at inline-end in RTL', async ({ page }) => {
         const appShell = new AppShellPageObject(page);
-        await page.goto(`/?ui=${variant}`);
+        // Navigate and wait for the shell to render before switching to RTL
+        await appShell.navigate(variant);
         await page.evaluate(() => {
           document.documentElement.setAttribute('dir', 'rtl');
         });
-        await page.waitForSelector('[data-testid="app-shell"]');
+        // Allow layout to reflow after dir change
+        await page.waitForTimeout(200);
 
         const sidebar = appShell.getSidebar();
         const content = appShell.getContent();

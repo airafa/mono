@@ -64,6 +64,7 @@ function MantineDesignSystem({ themeMode }: { themeMode: 'light' | 'dark' | 'exp
           background: c.surface,
           minHeight: '100vh',
           fontFamily: '"Rubik", sans-serif',
+          fontSize: 14,
           color: c.onSurface,
         }}
       >
@@ -269,12 +270,23 @@ export function buildMantineTheme(mode: ThemeMode): MantineThemeOverride {
 
         {/* ── LIVE SHELL ── */}
         {sectionTitle('Live AppShell')}
-        <AppShell logo={Logo} navItems={navItems} themeMode={themeMode} onThemeToggle={() => {}}>
-          <h2 style={{ fontFamily: '"Almarai", sans-serif', fontWeight: 700 }}>
-            Mantine Shell — {themeMode}
-          </h2>
-          <p>Body text rendered in Rubik from the token system.</p>
-        </AppShell>
+        <div
+          style={{
+            position: 'relative',
+            transform: 'scale(1)',
+            height: 500,
+            overflow: 'hidden',
+            borderRadius: 8,
+            border: '1px solid rgba(0,0,0,0.1)',
+          }}
+        >
+          <AppShell logo={Logo} navItems={navItems} themeMode={themeMode} onThemeToggle={() => {}}>
+            <h2 style={{ fontFamily: '"Almarai", sans-serif', fontWeight: 700 }}>
+              Mantine Shell — {themeMode}
+            </h2>
+            <p>Body text rendered in Rubik from the token system.</p>
+          </AppShell>
+        </div>
       </div>
     </MantineProvider>
   );

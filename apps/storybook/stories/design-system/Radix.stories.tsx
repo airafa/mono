@@ -57,7 +57,19 @@ function RadixDesignSystem({ themeMode }: { themeMode: 'light' | 'dark' | 'expre
   const c = themeMode === 'dark' ? tokens.colorDark : tokens.color;
 
   return (
-    <Theme appearance={themeProps.appearance} radius={themeProps.radius} accentColor="blue">
+    <Theme
+      appearance={themeProps.appearance}
+      radius={themeProps.radius}
+      accentColor="blue"
+      style={
+        {
+          /* Override Radix Theme defaults with Solarized tokens */
+          '--default-font-family': '"Rubik", sans-serif',
+          '--color-text': c.onSurface,
+          background: c.surface,
+        } as React.CSSProperties
+      }
+    >
       <div
         data-theme={themeMode}
         style={{
@@ -65,6 +77,7 @@ function RadixDesignSystem({ themeMode }: { themeMode: 'light' | 'dark' | 'expre
           background: c.surface,
           minHeight: '100vh',
           fontFamily: '"Rubik", sans-serif',
+          fontSize: 14,
           color: c.onSurface,
         }}
       >
@@ -268,12 +281,23 @@ export function buildRadixThemeProps(mode: ThemeMode) {
 
         {/* ── LIVE SHELL ── */}
         {sectionTitle('Live AppShell')}
-        <AppShell logo={Logo} navItems={navItems} themeMode={themeMode} onThemeToggle={() => {}}>
-          <h2 style={{ fontFamily: '"Almarai", sans-serif', fontWeight: 700 }}>
-            Radix Shell — {themeMode}
-          </h2>
-          <p>Body text rendered in Rubik from the token system.</p>
-        </AppShell>
+        <div
+          style={{
+            position: 'relative',
+            transform: 'scale(1)',
+            height: 500,
+            overflow: 'hidden',
+            borderRadius: 8,
+            border: '1px solid rgba(0,0,0,0.1)',
+          }}
+        >
+          <AppShell logo={Logo} navItems={navItems} themeMode={themeMode} onThemeToggle={() => {}}>
+            <h2 style={{ fontFamily: '"Almarai", sans-serif', fontWeight: 700 }}>
+              Radix Shell — {themeMode}
+            </h2>
+            <p>Body text rendered in Rubik from the token system.</p>
+          </AppShell>
+        </div>
       </div>
     </Theme>
   );

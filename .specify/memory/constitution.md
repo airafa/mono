@@ -1,21 +1,20 @@
 <!--
 Sync Impact Report
-- Version change: 1.1.0 -> 1.2.0
+- Version change: 1.2.0 -> 1.3.0
 - Modified principles:
-	- Delivery Workflow guidance expanded to enforce unused and dead code validation after each change
+        - Principle II ("Documentation-As-Product") expanded to codify token-first
+          architecture, ui-contracts as contract authority, variant-owned implementations,
+          VE as cross-cutting layer, and expressive theme governance
 - Added sections:
-	- Architecture Standards
-	- Delivery Workflow
+        - Package Retirement Policy (under Delivery Workflow)
 - Removed sections:
-	- None
+        - None
 - Templates requiring updates:
-	- ✅ updated: .specify/templates/plan-template.md
-	- ✅ updated: .specify/templates/spec-template.md
-	- ✅ updated: .specify/templates/tasks-template.md
-	- ✅ reviewed, no update required: .specify/extensions/git/commands/speckit.git.initialize.md
-	- ✅ reviewed, no update required: .specify/extensions/git/commands/speckit.git.commit.md
+        - ✅ reviewed, no update required: .specify/templates/plan-template.md
+        - ✅ reviewed, no update required: .specify/templates/spec-template.md
+        - ✅ reviewed, no update required: .specify/templates/tasks-template.md
 - Follow-up TODOs:
-	- None
+        - None
 -->
 
 # WSL-AD Frontend Monorepo Constitution
@@ -34,17 +33,57 @@ lifecycle cost.
 Rationale: a small team needs strict boundaries, fast workspace tooling, and a
 shared deployment model that remains understandable over decades.
 
-### II. Documentation-As-Product
+### II. Reusable UI — Token-First Architecture
 Every reusable UI surface MUST ship with matching developer and consumer
 documentation. VitePress is the canonical documentation system. Storybook is the
 canonical design-system catalog and MUST stay integrated with VitePress so
 component guidance, usage constraints, and examples are discoverable from one
-documentation path. Reusable UI MUST be built directly or through documented
-wrappers around Mantine, Radix UI Themes, Lit web components, or an approved
-combination of them.
+documentation path.
+
+**Token-first**: All color, spacing, elevation, motion, and radius values MUST be
+sourced from `@wsl-ad/ui-tokens`. Hard-coded literal values (hex colors, pixel
+margins, etc.) are forbidden in component implementations. The token package owns
+all Solarized+M3 role mappings, Gemini gradient references, Almarai/Rubik font
+scale, and all theming overrides for dark and expressive modes.
+
+**ui-contracts as contract authority**: All shared component interfaces (AppShell,
+List, Form, and their sub-components) MUST be defined in `@wsl-ad/ui-contracts`.
+No variant package may define its own public interface that duplicates or diverges
+from a contract already in `@wsl-ad/ui-contracts`. Contracts use TypeScript
+structural typing (`satisfies`) to enforce compatibility at type-test time without
+imposing runtime overhead.
+
+**Variant-owned implementations**: Each UI variant (`ui-mantine`, `ui-mui`,
+`ui-radix`, `ui-lit`) MUST own its full component implementation and MUST satisfy
+the corresponding contract from `@wsl-ad/ui-contracts`. Variant packages MUST NOT
+re-export other variants' components. Wrapper packages that proxy a single source
+of truth are forbidden; each variant is a self-contained, independently deployable
+component suite.
+
+**Vanilla Extract as cross-cutting layer**: Cross-cutting utility styles (density
+recipes, motion recipes, layout sprinkles) MUST be authored as Vanilla Extract
+`.css.ts` files in `@wsl-ad/ui-tokens`. They MUST reference the VE theme contract
+(`vars`) so they respond to theme switching automatically. Variant packages that
+consume VE utilities MUST configure `@vanilla-extract/vite-plugin` in both their
+Vite and Vitest configs to ensure build-time CSS generation and test compatibility.
+
+**Expressive theme governance**: The expressive theme MUST be activated exclusively
+via the `?theme=expressive` URL query parameter. It MUST NOT be exposed in the UI
+toggle and MUST NOT be the default. The `data-theme="expressive"` attribute MUST
+be set on the app-shell root element; gradient surfaces MUST be implemented via
+CSS attribute selectors, not CSS custom properties, because multi-stop rgba
+gradients cannot be interpolated through CSS variables.
+
+**DESIGN.md as agent-readable design reference**: The root-level `DESIGN.md` file
+MUST follow the [Google DESIGN.md specification](https://stitch.withgoogle.com/docs/design-md/specification)
+and MUST be kept in sync with `@wsl-ad/ui-tokens` token values. `DESIGN.md` is the
+authoritative human+AI-readable representation of the design system; `tokens.ts`
+is the authoritative implementation. Changes to token values MUST update both files
+in the same micro-task.
 
 Rationale: long-lived enterprise systems decay first in understanding, not only
-in code. Documentation must be maintained as a deliverable, not as an afterthought.
+in code. Token-first + contract-first + variant-owned creates a clear separation
+that survives designer, developer, and framework churn over decades.
 
 ### III. Test And Interaction Contracts
 Every shipped change MUST include the tests needed for its risk profile. Unit
@@ -84,37 +123,48 @@ retested, and revisited with data.
 
 - Package management MUST use pnpm.
 - New repository setup MUST install the latest compatible package versions with
-	pnpm installation workflows; maintainers MUST NOT hand-edit dependency version
-	numbers in new package manifests during initial setup.
+        pnpm installation workflows; maintainers MUST NOT hand-edit dependency version
+        numbers in new package manifests during initial setup.
 - Internationalization MUST support English and Hebrew.
 - Layout direction MUST support both LTR and RTL across app shell, reusable
-	components, forms, lists, and map-adjacent UI.
+        components, forms, lists, and map-adjacent UI.
 - Translation strings MUST be owned close to the relevant component or feature
-	source and aggregated into public static assets only at build time.
+        source and aggregated into public static assets only at build time.
 - Initial platform capabilities MUST be decomposable into small reviewed steps,
-	including an app shell, map integration, list wrappers for table and card
-	views, a form wrapper, and documented form controls.
+        including an app shell, map integration, list wrappers for table and card
+        views, a form wrapper, and documented form controls.
 
 ## Delivery Workflow
 
 - The team MUST work in a spec-driven, agent-assisted development lifecycle.
 - Every spec, plan, and task list MUST map work into micro-tasks small enough to
-	pass human review in a very short merge request.
+        pass human review in a very short merge request.
 - A merge request MUST keep scope narrow: one micro-task or one tightly related
-	micro-task bundle that preserves reviewability.
+        micro-task bundle that preserves reviewability.
 - Refactoring-only work and new functional additions MUST be planned as separate
-	micro-tasks. If a change needs both, they MUST be reviewed in two distinct
-	micro-tasks and SHOULD land in separate merge requests unless the plan documents
-	why separation would break correctness.
+        micro-tasks. If a change needs both, they MUST be reviewed in two distinct
+        micro-tasks and SHOULD land in separate merge requests unless the plan documents
+        why separation would break correctness.
 - Before implementation starts, the plan MUST identify the chosen monorepo tool,
-	affected packages, documentation impact, testing impact, transport impact, and
-	any required benchmark.
+        affected packages, documentation impact, testing impact, transport impact, and
+        any required benchmark.
 - Every code change MUST validate that newly orphaned, unused, or dead code has
-	been removed or explicitly justified. A change is not complete while unused
-	imports, unreachable branches, abandoned components, obsolete selectors, stale
-	types, or superseded helpers remain in the touched slice.
+        been removed or explicitly justified. A change is not complete while unused
+        imports, unreachable branches, abandoned components, obsolete selectors, stale
+        types, or superseded helpers remain in the touched slice.
 - A feature is not ready for merge until code, docs, translations, tests, and
-	page objects are updated together.
+        page objects are updated together.
+
+### Package Retirement Policy
+
+Any package with zero production exports — confirmed by `node tools/quality/unused-exports.mjs`
+— MUST be removed in the same feature branch that introduces its replacement. Retention
+of zero-export packages is prohibited: they accumulate maintenance cost, confuse dependency
+graphs, and mask build-time dead code. A retirement MUST be recorded in the relevant spec's
+task list with an explicit confirmation step (`grep -r <package-name>` confirms zero
+production consumers before deletion). If a package cannot be retired in the same branch
+due to a genuine cross-team dependency, the retention MUST be documented in the feature
+plan with a hard deadline for removal.
 
 ## Governance
 
@@ -128,4 +178,4 @@ governance changes or principle removal, MINOR for new principles or materially
 expanded mandatory guidance, and PATCH for clarifications that do not change
 required behavior.
 
-**Version**: 1.2.0 | **Ratified**: 2026-05-28 | **Last Amended**: 2026-05-28
+**Version**: 1.3.0 | **Ratified**: 2026-05-28 | **Last Amended**: 2026-05-28

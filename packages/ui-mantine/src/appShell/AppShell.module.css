@@ -8,6 +8,17 @@
   border-block-end: 1px solid var(--mantine-color-default-border);
 }
 
+[data-theme='expressive'] .topbar {
+  background: linear-gradient(
+    160deg,
+    #268bd2 0%,
+    #2aa198 35%,
+    #6c71c4 65%,
+    rgb(108 113 196 / 0%) 100%
+  );
+  border-block-end: none;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;

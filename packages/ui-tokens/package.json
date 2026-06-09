@@ -1,0 +1,27 @@
+{
+  "name": "@wsl-ad/ui-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vanilla-extract/css": "*",
+    "@vanilla-extract/recipes": "*",
+    "@vanilla-extract/sprinkles": "*"
+  },
+  "devDependencies": {
+    "@vanilla-extract/vite-plugin": "*",
+    "vite": "*",
+    "vitest": "*"
+  }
+}

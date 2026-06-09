@@ -9,15 +9,18 @@ The WSL-AD design system is documented through two integrated surfaces:
 
 ## Packages
 
-| Package                    | Purpose                               | Storybook Coverage |
-| -------------------------- | ------------------------------------- | ------------------ |
-| `@wsl-ad/ui-mui`           | MUI variant (Emotion + CSS Variables) | 2 stories          |
-| `@wsl-ad/ui-mantine`       | Mantine variant (CSS Modules)         | 2 stories          |
-| `@wsl-ad/ui-radix`         | Radix variant (Static CSS)            | 2 stories          |
-| `@wsl-ad/ui-lit`           | Lit variant (Inline Styles)           | 2 stories          |
-| `@wsl-ad/ui-list`          | Table and card list views             | Planned            |
-| `@wsl-ad/ui-forms`         | Form layout utilities                 | Planned            |
-| `@wsl-ad/ui-form-controls` | Documented form controls              | Planned            |
+| Package                | Purpose                                             | Storybook Coverage  |
+| ---------------------- | --------------------------------------------------- | ------------------- |
+| `@wsl-ad/ui-tokens`    | Canonical design tokens, VE theme contract, recipes | See VE Themes story |
+| `@wsl-ad/ui-contracts` | Shared TypeScript interfaces (AppShell, List, Form) | N/A (types only)    |
+| `@wsl-ad/ui-mui`       | MUI variant (Emotion + CSS Variables)               | 3 stories           |
+| `@wsl-ad/ui-mantine`   | Mantine variant (CSS Modules)                       | 2 stories           |
+| `@wsl-ad/ui-radix`     | Radix variant (Static CSS)                          | 2 stories           |
+| `@wsl-ad/ui-lit`       | Lit variant (Inline Styles)                         | 2 stories           |
+
+> `@wsl-ad/ui-list`, `@wsl-ad/ui-forms`, and `@wsl-ad/ui-form-controls` were retired in feature
+> `003-ui-theming-alignment`. Their implementations now live in each variant package.
+> See [ui-contracts](./ui-contracts.md) for the shared interfaces.
 
 ## Principles
 

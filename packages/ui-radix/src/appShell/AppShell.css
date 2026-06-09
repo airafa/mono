@@ -3,6 +3,16 @@
   min-height: 100vh;
 }
 
+/* Override Radix's --color-background with Solarized surface tokens */
+.app-shell[data-theme='light'],
+.app-shell[data-theme='expressive'] {
+  --color-background: #fdf6e3; /* Solarized light surface */
+}
+
+.app-shell[data-theme='dark'] {
+  --color-background: #002b36; /* Solarized dark surface */
+}
+
 .app-shell-inner {
   display: flex;
   flex: 1;
@@ -17,6 +27,17 @@
   padding: 0 var(--space-4);
   background: var(--color-background);
   border-block-end: 1px solid var(--gray-6);
+}
+
+[data-theme='expressive'] .app-shell-topbar {
+  background: linear-gradient(
+    160deg,
+    #268bd2 0%,
+    #2aa198 35%,
+    #6c71c4 65%,
+    rgb(108 113 196 / 0%) 100%
+  );
+  border-block-end: none;
 }
 
 .app-shell-body {

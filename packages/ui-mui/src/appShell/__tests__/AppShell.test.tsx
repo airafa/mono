@@ -61,7 +61,7 @@ describe('MUI AppShell', () => {
         <p>Content</p>
       </AppShell>,
     );
-    expect(screen.getByLabelText('Toggle theme')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Toggle theme' })).toBeInTheDocument();
   });
 
   it('calls onThemeToggle when toggle button is clicked', () => {
@@ -71,7 +71,7 @@ describe('MUI AppShell', () => {
         <p>Content</p>
       </AppShell>,
     );
-    fireEvent.click(screen.getByLabelText('Toggle theme'));
+    fireEvent.click(screen.getByRole('button', { name: 'Toggle theme' }));
     expect(onThemeToggle).toHaveBeenCalledTimes(1);
   });
 
@@ -82,5 +82,50 @@ describe('MUI AppShell', () => {
       </AppShell>,
     );
     expect(screen.getByTestId('app-shell')).toBeInTheDocument();
+  });
+
+  it('renders in expressive mode without crashing', () => {
+    render(
+      <AppShell logo={Logo} navItems={navItems} themeMode="expressive" onThemeToggle={() => {}}>
+        <p>Content</p>
+      </AppShell>,
+    );
+    expect(screen.getByTestId('app-shell')).toBeInTheDocument();
+  });
+
+  it('sets data-theme="expressive" on root when themeMode is expressive', () => {
+    render(
+      <AppShell logo={Logo} navItems={navItems} themeMode="expressive" onThemeToggle={() => {}}>
+        <p>Content</p>
+      </AppShell>,
+    );
+    expect(screen.getByTestId('app-shell')).toHaveAttribute('data-theme', 'expressive');
+  });
+
+  it('toggle button click is no-op when themeMode is expressive', () => {
+    const onToggle = vi.fn();
+    render(
+      <AppShell logo={Logo} navItems={navItems} themeMode="expressive" onThemeToggle={onToggle}>
+        <p>Content</p>
+      </AppShell>,
+    );
+    screen.getByRole('button', { name: 'Toggle theme' }).click();
+    expect(onToggle).not.toHaveBeenCalled();
+  });
+
+  it('does not call onThemeToggle when toggle is clicked in expressive mode', () => {
+    const onThemeToggle = vi.fn();
+    render(
+      <AppShell
+        logo={Logo}
+        navItems={navItems}
+        themeMode="expressive"
+        onThemeToggle={onThemeToggle}
+      >
+        <p>Content</p>
+      </AppShell>,
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Toggle theme' }));
+    expect(onThemeToggle).not.toHaveBeenCalled();
   });
 });

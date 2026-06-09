@@ -75,11 +75,12 @@ test.describe('AppShell Theme Performance (SC-002)', () => {
 
       // Start observing layout shifts before the toggle
       await page.evaluate(() => {
-        (window as any).__cls = 0;
+        (window as unknown as Window & { __cls: number }).__cls = 0;
         const observer = new PerformanceObserver((list) => {
           for (const entry of list.getEntries()) {
-            if (!(entry as any).hadRecentInput) {
-              (window as any).__cls += (entry as any).value;
+            const shift = entry as unknown as { hadRecentInput: boolean; value: number };
+            if (!shift.hadRecentInput) {
+              (window as unknown as Window & { __cls: number }).__cls += shift.value;
             }
           }
         });
@@ -101,7 +102,9 @@ test.describe('AppShell Theme Performance (SC-002)', () => {
       // Allow layout shift observer to collect entries
       await page.waitForTimeout(200);
 
-      const cls = await page.evaluate(() => (window as any).__cls);
+      const cls = await page.evaluate(
+        () => (window as unknown as Window & { __cls: number }).__cls,
+      );
       expect(cls).toBe(0);
     });
   }

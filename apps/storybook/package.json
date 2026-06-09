@@ -6,15 +6,17 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build",
+    "preview": "serve storybook-static -p 6006 --single",
     "lint": "eslint .storybook/",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@wsl-ad/app-shell": "workspace:*",
-    "@wsl-ad/ui-mui": "workspace:*",
-    "@wsl-ad/ui-mantine": "workspace:*",
-    "@wsl-ad/ui-radix": "workspace:*",
+    "@wsl-ad/ui-contracts": "workspace:*",
     "@wsl-ad/ui-lit": "workspace:*",
+    "@wsl-ad/ui-mantine": "workspace:*",
+    "@wsl-ad/ui-mui": "workspace:*",
+    "@wsl-ad/ui-radix": "workspace:*",
     "react": "*",
     "react-dom": "*"
   },
@@ -25,6 +27,8 @@
     "@storybook/react-vite": "^8.6.18",
     "@types/react": "*",
     "@types/react-dom": "*",
+    "@vanilla-extract/vite-plugin": "*",
+    "serve": "^14.2.4",
     "storybook": "^8.6.18",
     "vite": "^6.4.2"
   }

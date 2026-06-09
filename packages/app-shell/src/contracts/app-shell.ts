@@ -9,7 +9,13 @@ export interface AppShellNavItem {
 export interface AppShellProps {
   logo: ComponentType;
   navItems: AppShellNavItem[];
-  themeMode: 'light' | 'dark';
+  /**
+   * Active theme mode.
+   * - `'light'` / `'dark'` — toggled via `onThemeToggle`
+   * - `'expressive'` — URL-param-only; `onThemeToggle` is a no-op
+   */
+  themeMode: 'light' | 'dark' | 'expressive';
+  /** Cycles light ↔ dark only. No-op when `themeMode === 'expressive'`. */
   onThemeToggle: () => void;
   children?: ReactNode;
 }

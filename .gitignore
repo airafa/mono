@@ -33,6 +33,16 @@ pnpm-debug.log*
 # TypeScript
 *.tsbuildinfo
 
+# TypeScript build output in source directories (emitted by tsc with declaration/sourceMap)
+# Hand-authored .d.ts files (vite-env.d.ts, global.d.ts) are excluded from this pattern
+**/src/**/*.d.ts
+!**/src/**/vite-env.d.ts
+!**/src/**/global.d.ts
+**/src/**/*.d.ts.map
+**/src/**/*.js
+!**/src/**/*.css.ts
+**/src/**/*.js.map
+
 # Nx
 .nx/
 

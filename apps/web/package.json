@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
+    "@vanilla-extract/vite-plugin": "*",
     "@vitejs/plugin-react": "^6.0.2",
     "@wsl-ad/test-utils": "workspace:*",
     "jsdom": "*",
@@ -24,9 +25,10 @@
   },
   "dependencies": {
     "@wsl-ad/app-shell": "workspace:*",
-    "@wsl-ad/ui-mui": "workspace:*",
+    "@wsl-ad/ui-contracts": "workspace:*",
+    "@wsl-ad/ui-lit": "workspace:*",
     "@wsl-ad/ui-mantine": "workspace:*",
-    "@wsl-ad/ui-radix": "workspace:*",
-    "@wsl-ad/ui-lit": "workspace:*"
+    "@wsl-ad/ui-mui": "workspace:*",
+    "@wsl-ad/ui-radix": "workspace:*"
   }
 }

@@ -56,7 +56,7 @@ export class AppShellPageObject {
 
   /** The theme toggle button */
   getThemeToggle(): Locator {
-    return this.page.getByLabel('Toggle theme');
+    return this.page.getByTestId('theme-toggle');
   }
 
   /** Click the theme toggle button */

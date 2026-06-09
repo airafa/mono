@@ -1,8 +1,8 @@
 import { Component, lazy, Suspense, useCallback, useState } from 'react';
 import type { ReactNode } from 'react';
-import type { AppShellProps } from '@wsl-ad/app-shell';
+import type { AppShellProps } from '@wsl-ad/ui-contracts';
 import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@wsl-ad/app-shell';
-import { getActiveVariant, loadVariant } from './config/variant-loader.js';
+import { getActiveVariant, getActiveTheme, loadVariant } from './config/variant-loader.js';
 
 class VariantErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null }> {
   state: { error: Error | null } = { error: null };
@@ -36,9 +36,13 @@ const navItems: AppShellProps['navItems'] = [
 ];
 
 export function App() {
-  const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light');
+  const [themeMode, setThemeMode] = useState<'light' | 'dark' | 'expressive'>(getActiveTheme());
   const toggleTheme = useCallback(() => {
-    setThemeMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+    // expressive is URL-param only — toggle cycles light ↔ dark only
+    setThemeMode((prev) => {
+      if (prev === 'expressive') return prev;
+      return prev === 'light' ? 'dark' : 'light';
+    });
   }, []);
 
   return (

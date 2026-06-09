@@ -24,14 +24,15 @@ export default tseslint.config(
   {
     ignores: [
       'node_modules/',
-      'dist/',
+      '**/dist/',
       'build/',
       'coverage/',
-      'storybook-static/',
+      '**/storybook-static/',
       '*.min.js',
       '.nx/',
       '**/.vitepress/dist/',
       '**/.vitepress/cache/',
+      '**/*.d.ts',
     ],
   },
 );

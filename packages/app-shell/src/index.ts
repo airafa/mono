@@ -5,8 +5,6 @@
  * and platform capability management.
  */
 
-export type { AppShellNavItem, AppShellProps, AppShellComponent } from './contracts/app-shell.js';
-
 export type { EnvironmentConfig, EnvironmentId } from './config/environment-schema.js';
 export { environmentSchema } from './config/environment-schema.js';
 

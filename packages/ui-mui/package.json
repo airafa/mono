@@ -20,6 +20,7 @@
     "@emotion/styled": "*",
     "@mui/icons-material": "*",
     "@mui/material": "*",
+    "@vanilla-extract/css": "^1.20.1",
     "@wsl-ad/app-shell": "workspace:*",
     "@wsl-ad/ui-contracts": "workspace:*",
     "@wsl-ad/ui-tokens": "workspace:*",
@@ -27,11 +28,11 @@
     "react-dom": "*"
   },
   "devDependencies": {
-    "@vanilla-extract/vite-plugin": "*",
-    "@testing-library/react": "*",
     "@testing-library/jest-dom": "*",
+    "@testing-library/react": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
+    "@vanilla-extract/vite-plugin": "*",
     "jsdom": "*"
   }
 }

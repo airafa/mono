@@ -46,7 +46,7 @@ export function buildMantineTheme(mode: ThemeMode): MantineThemeOverride {
     primaryColor: 'brand',
     // Override Mantine's default white so --mantine-color-body = Solarized cream (#fdf6e3) in light mode
     white: tokens.color.surface,
-    black: tokens.color.inverseSurface,
+    black: tokens.color.onSurface,
     colors: {
       // 10-shade ramp: M3 roles mapped to Mantine shade indices 0–9
       // Index  Mantine usage      M3 role

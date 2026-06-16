@@ -17,6 +17,7 @@ import type {
   RadioGroupProps,
   TextAreaProps,
 } from '@wsl-ad/ui-contracts';
+import * as styles from './forms.css.js';
 
 export function Form({
   onSubmit,
@@ -35,7 +36,7 @@ export function Form({
       }}
     >
       {children}
-      <Button type="submit" disabled={loading} variant="contained" sx={{ mt: 2 }}>
+      <Button type="submit" disabled={loading} variant="contained" className={styles.submitButton}>
         Submit
       </Button>
     </form>

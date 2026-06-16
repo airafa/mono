@@ -335,6 +335,9 @@ importers:
       '@mui/material':
         specifier: '*'
         version: 9.0.1(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@vanilla-extract/css':
+        specifier: ^1.20.1
+        version: 1.20.1(babel-plugin-macros@3.1.0)
       '@wsl-ad/app-shell':
         specifier: workspace:*
         version: link:../app-shell

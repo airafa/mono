@@ -27,6 +27,8 @@ export function AppShell({
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        fontFamily: 'var(--font-body-family, "Rubik", sans-serif)',
+        fontSize: 'var(--font-body-size, 14px)',
         background: 'var(--color-surface)',
         color: 'var(--color-on-surface)',
       }}

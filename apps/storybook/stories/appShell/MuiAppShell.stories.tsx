@@ -62,25 +62,3 @@ export const Dark: Story = {
 export const Expressive: Story = {
   args: { themeMode: 'expressive' },
 };
-
-// --- VE Theme Class baseline stories (visual regression) ---
-// Inspect the shell root in DevTools → Elements to see the CSS custom properties
-// set by each Vanilla Extract theme class (lightThemeClass / darkThemeClass / expressiveThemeClass).
-
-/** lightThemeClass applied — Solarized light base, M3 color roles */
-export const VeLightTheme: Story = {
-  name: 'VE: Light Theme Class',
-  args: { themeMode: 'light' },
-};
-
-/** darkThemeClass applied — Solarized dark inversion */
-export const VeDarkTheme: Story = {
-  name: 'VE: Dark Theme Class',
-  args: { themeMode: 'dark' },
-};
-
-/** expressiveThemeClass applied — Gemini gradient surfaces, heavy rounding, kinetic motion */
-export const VeExpressiveTheme: Story = {
-  name: 'VE: Expressive Theme Class',
-  args: { themeMode: 'expressive' },
-};

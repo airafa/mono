@@ -8,9 +8,9 @@
 
 ## Summary
 
-Introduce a canonical design-token package (`packages/ui-tokens`) and a shared interface package (`packages/ui-contracts`) as the single sources of truth for all UI styling and component contracts. Migrate `AppShellProps` from `packages/app-shell` to `ui-contracts`. Retire empty placeholder packages (`ui-list`, `ui-forms`, `ui-form-controls`). Layer Vanilla Extract as a build-time cross-cutting styling API (density recipes, sprinkles, theme classes). Add an **expressive theme** — a Gemini-inspired visual mode (gradient surfaces, circle-based rounding, kinetic motion) — accessible exclusively via `?theme=expressive` URL param, combinable with `?ui={variant}`. Update the project constitution to v1.3.
+Introduce a canonical design-token package (`packages/ui-tokens`) and a shared interface package (`packages/ui-contracts`) as the single sources of truth for all UI styling and component contracts. Migrate `AppShellProps` from `packages/app-shell` to `ui-contracts`. Retire empty placeholder packages (`ui-list`, `ui-forms`, `ui-form-controls`). Layer Vanilla Extract as a build-time cross-cutting styling API (density recipes, sprinkles, theme classes). Add an **expressive theme** — a Gemini-inspired visual mode (gradient surfaces, circle-based rounding, Material 3 Expressive spring motion) — accessible exclusively via `?theme=expressive` URL param, combinable with `?ui={variant}`. The MUI variant authors all its custom layout in Vanilla Extract (the `sx`/Emotion prop is ESLint-banned); fonts are bundled locally via `@fontsource`. Update the project constitution to v1.3.
 
-Color system: Solarized palette (Ethan Schoonover) mapped to M3 semantic roles; gradient tokens follow the Gemini visual design language (design.google/library/gemini-ai-visual-design) — directional energy pointers with sharp opaque leading edges diffusing at the tail, and radial "thinking" gradients that ripple outward. Typography: Almarai (H1, RTL/LTR) + Rubik (body, labels, inputs, badges).
+Color system: Solarized palette (Ethan Schoonover) mapped to M3 semantic roles; gradient tokens follow the Gemini visual design language (design.google/library/gemini-ai-visual-design) — directional energy pointers with sharp opaque leading edges diffusing at the tail, and radial "thinking" gradients that ripple outward. Motion follows Material 3 Expressive spring curves (m3.material.io/blog/building-with-m3-expressive). Typography: Almarai (H1, RTL/LTR) + Rubik (body, labels, inputs, badges).
 
 ## Technical Context
 
@@ -119,7 +119,7 @@ packages/
 │       ├── token-adapter.ts          # maps ui-tokens → MantineThemeOverride; handles 'expressive' themeMode
 │       └── contract.typetest.ts      # satisfies AppShellComponent, ListComponent, FormComponent
 │
-├── ui-mui/                           # MODIFIED — same structure as ui-mantine
+├── ui-mui/                           # MODIFIED — VE for all custom layout (sx banned via ESLint); Emotion only inside MUI widgets
 ├── ui-radix/                         # MODIFIED — same structure as ui-mantine
 ├── ui-lit/                           # MODIFIED — CSS custom property adapter; data-theme="expressive" on host
 │

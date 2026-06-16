@@ -272,8 +272,9 @@ TokenTree
 ```
 
 **Font loading notes**:
-- `Almarai` — Arabic + Latin, supports RTL/LTR. Load via Google Fonts: `family=Almarai:wght@700`. Use for all `font.heading.h1` surfaces.
-- `Rubik` — Latin + Hebrew, supports RTL/LTR. Load via Google Fonts: `family=Rubik:wght@400;500`. Use for all body, label, badge, and input surfaces.
+- `Almarai` — Arabic + Latin, supports RTL/LTR. Loaded locally via `@fontsource/almarai/700.css`. Use for all `font.heading.h1` surfaces.
+- `Rubik` — Latin + Hebrew, supports RTL/LTR. Loaded locally via `@fontsource/rubik/400.css` and `@fontsource/rubik/500.css`. Use for all body, label, badge, and input surfaces.
+- Fonts are bundled with `@fontsource` packages (self-hosted) rather than the Google Fonts CDN — the CDN is unreachable in air-gapped/CI environments and caused silent `Times New Roman` fallbacks that broke cross-variant consistency (see research R-013).
 - Both fonts provide native RTL support, satisfying the LTR/RTL parity requirement from the constitution.
 
 ---
@@ -282,10 +283,10 @@ TokenTree
 
 The **expressive theme** is a Gemini-inspired visual mode that activates gradient surfaces, heavier rounding, and kinetic motion. It is **not** a standalone base theme — it layers *override tokens* on top of either `light` or `dark` base colors. Access is intentionally restricted to `?theme=expressive` URL parameter (optionally combined with `?ui={variant}`).
 
-**Design rationale** (source: design.google/library/gemini-ai-visual-design):
+**Design rationale** (sources: design.google/library/gemini-ai-visual-design + m3.material.io/blog/building-with-m3-expressive):
 - Gradients convey directional energy and AI "thinking state" rather than static decoration
 - Circle-based heavy rounding signals warmth, harmony, and playful optimism
-- Kinetic anticipate/release curves give a sense of responsiveness and intelligence
+- Kinetic motion uses **Material 3 Expressive spring curves** — spatial properties overshoot the target then settle (bouncy), effects (color/opacity) settle smoothly without overshoot. See research R-012 for the converted CSS `cubic-bezier`/duration values.
 - Softness and approachability are central — the system should feel "ethereal, rounded, optimistic"
 
 **Activation mechanism**:
@@ -313,8 +314,8 @@ ExpressiveThemeOverrides
 │   ├── xl:   '32px'   // bumped up from 24px
 │   └── 2xl:  '48px'   // extra-heavy rounding for hero elements
 ├── motion
-│   ├── easing.standard → easing.anticipate       // kinetic feel over smooth
-│   └── duration.normal → '250ms'                 // slightly slower to feel deliberate
+│   ├── easing.standard → M3 Expressive default spatial (bouncy overshoot)
+│   └── duration.normal → '500ms'                 // M3 Expressive default spatial duration
 └── elevation
     ├── sm: '0 2px 8px rgba(38,139,210,0.16), 0 1px 3px rgba(0,43,54,0.08)'  // tinted shadow
     └── md: '0 4px 16px rgba(38,139,210,0.20), 0 2px 6px rgba(0,43,54,0.10)' // tinted shadow
@@ -328,8 +329,8 @@ expressiveThemeClass (createTheme output)
 ├── Overrides vars.radius.lg → '24px'
 ├── Overrides vars.radius.xl → '32px'
 ├── Overrides vars.radius.2xl → '48px'
-├── Overrides vars.motion.easing.standard → 'cubic-bezier(0.36, 0, 0.66, -0.56)'
-├── Overrides vars.motion.duration.normal → '250ms'
+├── Overrides vars.motion.easing.standard → 'cubic-bezier(0.38, 1.21, 0.22, 1.00)'  // M3 Expressive default spatial
+├── Overrides vars.motion.duration.normal → '500ms'  // M3 Expressive default spatial duration
 ├── Overrides vars.elevation.sm → '0 2px 8px rgba(38,139,210,0.16), 0 1px 3px rgba(0,43,54,0.08)'
 └── Overrides vars.elevation.md → '0 4px 16px rgba(38,139,210,0.20), 0 2px 6px rgba(0,43,54,0.10)'
 

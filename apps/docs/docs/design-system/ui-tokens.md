@@ -33,7 +33,7 @@ tokens.radius.md; // '8px'
 | `color`           | 30 M3 semantic roles (primary, surface, onSurface, …)      |
 | `spacing`         | xs / sm / md / lg / xl / 2xl                               |
 | `elevation`       | none / sm / md / lg                                        |
-| `motion.duration` | instant / fast / normal / moderate / slow / deliberate     |
+| `motion.duration` | instant / fast / normal / slow / deliberate / thinking     |
 | `motion.easing`   | standard / decelerate / accelerate / anticipate / thinking |
 | `radius`          | none / xs / sm / md / lg / xl / 2xl / full                 |
 
@@ -68,11 +68,16 @@ const veClass =
 
 ### Theme Class Differences
 
-| Class                  | Base Colors     | Radius      | Motion           | Elevation        |
-| ---------------------- | --------------- | ----------- | ---------------- | ---------------- |
-| `lightThemeClass`      | Solarized light | Standard    | 200ms standard   | Standard shadows |
-| `darkThemeClass`       | Solarized dark  | Standard    | 200ms standard   | Standard shadows |
-| `expressiveThemeClass` | Solarized light | Bumped +4px | 250ms anticipate | Tinted shadows   |
+| Class                  | Base Colors     | Radius      | Motion                                  | Elevation        |
+| ---------------------- | --------------- | ----------- | --------------------------------------- | ---------------- |
+| `lightThemeClass`      | Solarized light | Standard    | M3 standard (200ms)                     | Standard shadows |
+| `darkThemeClass`       | Solarized dark  | Standard    | M3 standard (200ms)                     | Standard shadows |
+| `expressiveThemeClass` | Solarized light | Bumped +4px | M3 Expressive spring (overshoot, 500ms) | Tinted shadows   |
+
+> The expressive theme uses official **Material 3 Expressive** spring motion — spatial
+> properties overshoot then settle (`cubic-bezier(0.38, 1.21, 0.22, 1.00)`, 500ms), effects
+> settle smoothly. Gradient surfaces are applied via `[data-theme="expressive"]` selectors
+> (multi-stop rgba gradients cannot be interpolated through CSS variables).
 
 ## Density Recipe
 

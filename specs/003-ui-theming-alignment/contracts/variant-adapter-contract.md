@@ -68,6 +68,12 @@ export function getMantineThemeClass(themeMode: 'light' | 'dark' | 'expressive')
 
 ### MUI (`packages/ui-mui/src/token-adapter.ts`)
 
+> **Styling note**: The MUI variant authors all of its custom layout in Vanilla Extract
+> (`appShell/AppShell.css.ts`, `forms/forms.css.ts`). The Emotion `sx` prop is **disallowed**
+> (ESLint `no-restricted-syntax` scoped to `packages/ui-mui`). `buildMuiTheme` configures the
+> MUI palette/typography/shape for the MUI components' *own* Emotion-based widget styling
+> (`IconButton`, `Tooltip`, `TextField`, …); the variant's structural styles do not use `sx`.
+
 ```ts
 import type { ThemeOptions } from '@mui/material';
 
@@ -87,12 +93,13 @@ export function buildMuiTheme(themeMode: 'light' | 'dark' | 'expressive'): Theme
       h1: { fontFamily: tokens.font.heading.h1.family, fontWeight: tokens.font.heading.h1.weight, fontSize: tokens.font.heading.h1.size, lineHeight: tokens.font.heading.h1.lineHeight },
     },
     shape: { borderRadius: parseInt(isExpressive ? expressiveOverrides.radius.md : tokens.radius.md) },
-    components: isExpressive ? {
-      MuiAppBar: { styleOverrides: { root: { backgroundImage: tokens.gradient.expressive.hero } } },
-    } : {},
   };
 }
 ```
+
+> The expressive gradient on the topbar is applied in `AppShell.css.ts` via a
+> `[data-theme="expressive"] &` selector (not a `MuiAppBar` style override), consistent
+> with the other variants.
 
 ---
 

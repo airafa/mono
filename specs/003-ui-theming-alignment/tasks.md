@@ -188,6 +188,21 @@
 
 ---
 
+## Phase 11: Design-Language & Cross-Variant Refinement
+
+**Purpose**: Align the expressive theme with the official Material 3 Expressive motion spec, make fonts deterministic across environments, refactor the MUI variant onto Vanilla Extract, and close the cross-variant visual gaps surfaced by the consistency suite.
+
+- [X] T079 Replace the custom "anticipate" expressive easing with official **Material 3 Expressive** spring curves (web conversion table) in `packages/ui-tokens/src/tokens.expressive.ts`; expand to `fastSpatial`/`slowSpatial`/`effects`/`fastEffects`; wire `expressiveThemeClass` durations (500/350/650ms) in `packages/ui-tokens/src/theme.css.ts` per [research.md R-012](research.md)
+- [X] T080 Switch web-font loading from Google Fonts CDN to local `@fontsource/almarai` + `@fontsource/rubik` in `apps/storybook/.storybook/preview.ts` and the web entry; remove the CDN `<link>` injection per [research.md R-013](research.md)
+- [X] T081 [US1] Refactor `packages/ui-mui` to Vanilla Extract: author all AppShell/forms layout in `appShell/AppShell.css.ts` and `forms/forms.css.ts`; remove every `sx` prop; replace `AppBar`/`Toolbar`/`Box` with semantic `header`/`aside`/`main`; add `@vanilla-extract/css` dependency per [research.md R-011](research.md)
+- [X] T082 [US5] Add an ESLint `no-restricted-syntax` rule scoped to `packages/ui-mui/**` that bans the `sx` JSX attribute (message points to VE/recipes/sprinkles) in `eslint.config.mjs`
+- [X] T083 [P] Fix cross-variant gaps surfaced by the visual-consistency suite (per [research.md R-014](research.md)): Lit shell `font-family`/`font-size` from CSS vars; Mantine `black`→`onSurface`; Radix `--color-on-surface`/`--color-surface-variant` + content color/font; MUI AppBar → `background.default`; sidebars standardized to `surfaceVariant`
+- [X] T084 [P] Add Storybook design-system stories (ColorPalette, Typography, per-variant Mui/Mantine/Radix/Lit) with a `transform`-containing-block decorator so `position: fixed` AppShell elements stay inside the canvas; remove duplicate VE-prefixed MUI AppShell stories, keeping `Light`/`Dark`/`Expressive`
+- [X] T085 Scope Radix overflow suppression to `.radix-themes:has(> .app-shell)` and switch the visual-consistency screenshots to viewport-clipped (`overflow: hidden` before measurement) so headed and headless runs match; refresh committed snapshot baselines
+- [X] T086 Run `pnpm lint && pnpm -r build && pnpm test && pnpm test:e2e`; confirm zero `sx` props remain in `packages/ui-mui/src`, all 4 variants render identically (fonts, colors, geometry), and 72/72 e2e pass
+
+---
+
 ## Dependencies
 
 ```
@@ -201,6 +216,7 @@ Phase 1 (T001–T007)
         └── Phase 8 (T063–T066)    US5: constitution update           [after all US complete]
               └── Phase 9 (T067–T072) Polish                          [after Phase 8]
                     └── Phase 10 (T073–T078) DESIGN.md + visual tests [after Phase 9]
+                          └── Phase 11 (T079–T086) design-language + cross-variant refinement [after Phase 10]
 ```
 
 **Parallel opportunities per story**:

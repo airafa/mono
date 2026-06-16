@@ -1,12 +1,14 @@
 <!--
 Sync Impact Report
-- Version change: 1.2.0 -> 1.3.0
+- Version change: 1.3.0 -> 1.4.0
 - Modified principles:
-        - Principle II ("Documentation-As-Product") expanded to codify token-first
-          architecture, ui-contracts as contract authority, variant-owned implementations,
-          VE as cross-cutting layer, and expressive theme governance
+        - Principle II ("Reusable UI — Token-First Architecture") expanded:
+          • MUI variant authors all custom layout in Vanilla Extract; Emotion `sx` forbidden
+          • Web fonts MUST be bundled locally via `@fontsource` (no Google Fonts CDN)
+          • Expressive motion MUST use official Material 3 Expressive spring curves
+          • Cross-variant visual consistency MUST be enforced by a Playwright suite
 - Added sections:
-        - Package Retirement Policy (under Delivery Workflow)
+        - None (amendments folded into Principle II)
 - Removed sections:
         - None
 - Templates requiring updates:
@@ -66,13 +68,30 @@ recipes, motion recipes, layout sprinkles) MUST be authored as Vanilla Extract
 (`vars`) so they respond to theme switching automatically. Variant packages that
 consume VE utilities MUST configure `@vanilla-extract/vite-plugin` in both their
 Vite and Vitest configs to ensure build-time CSS generation and test compatibility.
+A variant MAY also author its own structural/layout styles in Vanilla Extract. The
+MUI variant does so exclusively: its custom layout lives in `.css.ts` files and the
+Emotion `sx` prop is forbidden (enforced by an ESLint `no-restricted-syntax` rule
+scoped to `packages/ui-mui`). MUI components still use Emotion for their own widget
+internals — that is intrinsic to MUI — but the variant's own styles MUST be VE.
+
+**Web fonts**: Brand fonts (Almarai for headings, Rubik for body) MUST be bundled
+locally via `@fontsource` packages. The Google Fonts CDN MUST NOT be relied upon at
+runtime — it is unreachable in air-gapped and CI environments and causes silent font
+fallbacks that break cross-variant visual consistency and benchmark reproducibility.
 
 **Expressive theme governance**: The expressive theme MUST be activated exclusively
 via the `?theme=expressive` URL query parameter. It MUST NOT be exposed in the UI
 toggle and MUST NOT be the default. The `data-theme="expressive"` attribute MUST
 be set on the app-shell root element; gradient surfaces MUST be implemented via
 CSS attribute selectors, not CSS custom properties, because multi-stop rgba
-gradients cannot be interpolated through CSS variables.
+gradients cannot be interpolated through CSS variables. Expressive motion MUST use
+the official **Material 3 Expressive** spring curves (spatial overshoot, smooth
+effects), not ad-hoc easing.
+
+**Cross-variant visual consistency**: All active variants MUST render the same
+content identically (fonts, colors, spacing, layout geometry). This MUST be enforced
+by an automated Playwright visual-consistency suite that compares screenshots,
+structural layout, and computed token colors across MUI, Mantine, Radix, and Lit.
 
 **DESIGN.md as agent-readable design reference**: The root-level `DESIGN.md` file
 MUST follow the [Google DESIGN.md specification](https://stitch.withgoogle.com/docs/design-md/specification)
@@ -178,4 +197,4 @@ governance changes or principle removal, MINOR for new principles or materially
 expanded mandatory guidance, and PATCH for clarifications that do not change
 required behavior.
 
-**Version**: 1.3.0 | **Ratified**: 2026-05-28 | **Last Amended**: 2026-05-28
+**Version**: 1.4.0 | **Ratified**: 2026-05-28 | **Last Amended**: 2026-06-16

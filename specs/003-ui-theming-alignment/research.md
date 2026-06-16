@@ -74,9 +74,10 @@
 
 **VE + Lit**: VE cannot be used inside Lit's shadow DOM. Lit components consume canonical tokens as CSS custom properties injected on `:root` or on the host element. VE does not apply to Lit component internals.
 
-**VE + MUI**: MUI Emotion takes precedence for component styling. VE can be used for layout wrappers and non-MUI-component surfaces within a MUI variant page.
+**VE + MUI**: The MUI variant uses Vanilla Extract for **all** custom layout styling. The Emotion `sx` prop is **disallowed** (enforced by an ESLint `no-restricted-syntax` rule scoped to `packages/ui-mui`). MUI's component internals (`IconButton`, `Tooltip`, `TextField`, etc.) still use Emotion for their own widget styling — that is intrinsic to MUI and not replaceable without forking the library — but every structural/layout style the variant authors lives in a `.css.ts` file (e.g. `appShell/AppShell.css.ts`, `forms/forms.css.ts`). See **R-011** for the rationale behind coexistence rather than replacement.
 
 ---
+
 
 ## R-004: Contract Compliance Enforcement
 
@@ -223,6 +224,10 @@ packages/ui-contracts/
 | ui-contracts structure | One file per component domain, accessibility as required props | Clean, discoverable, extensible |
 | Placeholder retirement | Safe to remove (zero production consumers) | Verified: empty barrel files |
 | DESIGN.md format alignment | Root-level `DESIGN.md` with YAML tokens + markdown rationale | Machine-readable for AI agents, human-readable for design review, lintable via `@google/design.md` |
+| MUI styling strategy | VE for all layout, Emotion for widgets, `sx` banned via ESLint | Emotion is intrinsic to MUI; VE keeps the variant's own styles zero-runtime and uniform with other variants |
+| Expressive motion | Official M3 Expressive spring curves (overshoot) | Aligns with the design language; replaces the inverted custom anticipate curve |
+| Web fonts | `@fontsource/almarai` + `@fontsource/rubik` (local) | CDN unreachable in air-gapped/CI; deterministic, benchmark-reproducible |
+| Cross-variant consistency | Playwright visual-consistency suite (screenshot + layout + color) | Catches font/color/geometry drift between variants automatically |
 
 ---
 
@@ -247,3 +252,78 @@ packages/ui-contracts/
 - DESIGN.md `components.*` ↔ variant adapter mappings in each `token-adapter.ts`
 
 **Validation**: Run `npx @google/design.md lint DESIGN.md` in CI to catch structural issues, broken token references, and WCAG contrast violations.
+
+---
+
+## R-011: MUI — Vanilla Extract for Layout, Emotion for Widgets
+
+**Question**: Should the MUI variant replace Emotion with Vanilla Extract, or run them in parallel?
+
+**Decision**: Author **all** custom layout/structural styling in Vanilla Extract (`.css.ts`); ban the `sx` prop; keep MUI components (which use Emotion internally) for accessible widget behavior only.
+
+**Rationale**:
+- MUI is welded to Emotion — every component (`Button`, `AppBar`, `IconButton`, `TextField`) styles itself via `styled()` and the `sx` prop. Replacing Emotion means forking or rewriting MUI, which is a *framework replacement*, not a theming change. The repo already has Radix as a headless-leaning variant for that need.
+- VE (build-time) and Emotion (runtime) operate on different layers and do not conflict. VE emits static `.css`; Emotion injects per-component `<style>` at first hydration.
+- The cost is bounded: with `cssVariables: true` (MUI v6+), theme switching is already zero-runtime CSS-var reassignment — no new Emotion styles are injected on toggle. Emotion overhead is limited to one-time component hydration.
+- Banning `sx` keeps the variant's *own* styles in the same zero-runtime VE pipeline the other three variants use, so cross-variant token consumption is uniform.
+
+**Enforcement**: An ESLint `no-restricted-syntax` rule scoped to `packages/ui-mui/**` rejects any `sx` JSX attribute with a message pointing to VE/recipes/sprinkles. The variant adds `@vanilla-extract/css` as a direct dependency and registers `@vanilla-extract/vite-plugin` in both Vite and Vitest configs.
+
+**Alternatives considered**:
+- *Replace Emotion entirely*: rejected — not feasible without rebuilding MUI's component layer.
+- *Allow `sx` for "small" styles*: rejected — porous boundaries erode the zero-runtime guarantee and make the variant inconsistent with the others.
+
+---
+
+## R-012: Expressive Motion — Material 3 Expressive Spring Curves
+
+**Question**: What motion values should the expressive theme use?
+
+**Decision**: Adopt the official **Material 3 Expressive** motion physics, converted to CSS `cubic-bezier` + duration using Google's published web conversion table (m3.material.io/styles/motion/overview/specs).
+
+**Rationale**:
+- M3 Expressive motion is spring-based with **overshoot** for spatial properties (position, size, rotation) and **smooth settle** for effects (color, opacity). The earlier custom "anticipate" curve (`cubic-bezier(0.36, 0, 0.66, -0.56)`) pulled *back before* settling — the opposite of the M3 Expressive feel, which bounces *past* the target then settles.
+- Using the official values keeps the expressive theme defensible and aligned with the design language it claims to follow (M3 Expressive, building-with-m3-expressive).
+
+**Resolved values** (in `tokens.expressive.ts`, consumed by `expressiveThemeClass` and variant adapters):
+
+| Token | cubic-bezier | Duration |
+|-------|--------------|----------|
+| `standard` (default spatial) | `cubic-bezier(0.38, 1.21, 0.22, 1.00)` | 500ms |
+| `fastSpatial` | `cubic-bezier(0.42, 1.67, 0.21, 0.90)` | 350ms |
+| `slowSpatial` | `cubic-bezier(0.39, 1.29, 0.35, 0.98)` | 650ms |
+| `effects` (default) | `cubic-bezier(0.34, 0.80, 0.34, 1.00)` | 200ms |
+| `fastEffects` | `cubic-bezier(0.31, 0.94, 0.34, 1.00)` | 150ms |
+
+The base (non-expressive) themes keep the M3 *standard* easing/duration set.
+
+---
+
+## R-013: Web Font Loading — `@fontsource` Local Packages
+
+**Question**: How should Almarai (headings) and Rubik (body) be loaded?
+
+**Decision**: Bundle fonts locally via `@fontsource/almarai` and `@fontsource/rubik` (imported in the app/Storybook entry) instead of the Google Fonts CDN `<link>`.
+
+**Rationale**:
+- The Google Fonts CDN is unreachable in offline/air-gapped enterprise and CI environments (observed `ERR_CERT_AUTHORITY_INVALID` / fetch failures), which made variants silently fall back to `Times New Roman` and broke cross-variant visual consistency.
+- `@fontsource` packages are self-hosted, deterministic, and version-pinned — fonts load identically in dev, CI, and production with no external dependency.
+- Aligns with the constitution's environment-agnostic and benchmark-reproducibility goals.
+
+**Application**: `apps/storybook/.storybook/preview.ts` imports `@fontsource/almarai/700.css`, `@fontsource/rubik/400.css`, `@fontsource/rubik/500.css`. The web app loads the same families. Each variant's shell root applies `font-family`/`font-size` from the token CSS variables so the body font is consistent across MUI, Mantine, Radix, and Lit.
+
+---
+
+## R-014: Cross-Variant Visual Consistency Enforcement
+
+**Question**: How do we guarantee all four variants render the same content identically?
+
+**Decision**: A Playwright visual-consistency suite (`apps/web/src/__tests__/visual-consistency.e2e.ts`) captures each variant × theme and asserts: (1) screenshot match against a committed baseline, (2) structural layout parity (topbar/sidebar/content geometry within tolerance), (3) token-level color parity (computed background/text colors via RGB distance).
+
+**Findings & fixes this iteration**:
+- **Lit** did not apply `font-family`/`font-size` on the shell root → fixed by reading `--font-body-family`/`--font-body-size` CSS vars.
+- **Mantine** mapped `black` to `inverseSurface` (too dark) → corrected to `onSurface`.
+- **Radix** `<Theme>` overrode text color/font → added `--color-on-surface` and `--color-surface-variant` overrides plus explicit content color/font.
+- **MUI** AppBar defaulted to the primary color → set to `background.default`; sidebars standardized to `surfaceVariant` across all variants.
+- Headed vs headless scrollbar drift on Radix → contained `.radix-themes:has(> .app-shell)` overflow and switched the visual test to viewport-clipped screenshots with `overflow: hidden` before measurement.
+

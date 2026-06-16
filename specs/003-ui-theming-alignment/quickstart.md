@@ -162,14 +162,16 @@ Full M3 role → Solarized mapping: [data-model.md §1.1](data-model.md#11-token
 | `font.input.md`    | Rubik   | 400    | 14px  | 100%        |
 | `font.input.sm`    | Rubik   | 400    | 12px  | 18px        |
 
-Load via Google Fonts in `apps/web/index.html`:
+Fonts are bundled locally via `@fontsource` (self-hosted — no Google Fonts CDN, so they load deterministically in air-gapped/CI environments):
 
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@700&family=Rubik:wght@400;500&display=swap">
+```ts
+// apps/web entry / apps/storybook/.storybook/preview.ts
+import '@fontsource/almarai/700.css';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/500.css';
 ```
 
-Both fonts support RTL (Almarai: Arabic/Latin; Rubik: Hebrew/Latin).
+Each variant's shell root applies `font-family`/`font-size` from the token CSS variables so the body font is identical across MUI, Mantine, Radix, and Lit. Both fonts support RTL (Almarai: Arabic/Latin; Rubik: Hebrew/Latin).
 
 ---
 

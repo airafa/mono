@@ -9,14 +9,14 @@ The mono design system is documented through two integrated surfaces:
 
 ## Packages
 
-| Package              | Purpose                                             | Storybook Coverage  |
-| -------------------- | --------------------------------------------------- | ------------------- |
-| `@mono/ui-tokens`    | Canonical design tokens, VE theme contract, recipes | See VE Themes story |
-| `@mono/ui-contracts` | Shared TypeScript interfaces (AppShell, List, Form) | N/A (types only)    |
-| `@mono/ui-mui`       | MUI variant (Emotion + CSS Variables)               | 3 stories           |
-| `@mono/ui-mantine`   | Mantine variant (CSS Modules)                       | 2 stories           |
-| `@mono/ui-radix`     | Radix variant (Static CSS)                          | 2 stories           |
-| `@mono/ui-lit`       | Lit variant (Inline Styles)                         | 2 stories           |
+| Package              | Purpose                                                                                       | Storybook Coverage                |
+| -------------------- | --------------------------------------------------------------------------------------------- | --------------------------------- |
+| `@mono/ui-tokens`    | Canonical design tokens, VE theme contract, recipes                                           | See VE Themes story               |
+| `@mono/ui-contracts` | Shared TypeScript interfaces (AppShell, List, Form)                                           | N/A (types only)                  |
+| `@mono/ui-mui`       | MUI variant (Vanilla Extract for layout; Emotion only inside MUI widgets; `sx` ESLint-banned) | 3 stories (Light/Dark/Expressive) |
+| `@mono/ui-mantine`   | Mantine variant (CSS Modules + VE theme classes)                                              | 3 stories                         |
+| `@mono/ui-radix`     | Radix variant (CSS variables + VE theme classes)                                              | 3 stories                         |
+| `@mono/ui-lit`       | Lit variant (Shadow DOM CSS custom properties)                                                | 3 stories                         |
 
 > `@mono/ui-list`, `@mono/ui-forms`, and `@mono/ui-form-controls` were retired in feature
 > `003-ui-theming-alignment`. Their implementations now live in each variant package.

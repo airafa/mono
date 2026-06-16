@@ -38,12 +38,12 @@ All variants render these `data-testid` attributes:
 
 ## Variants
 
-| Package            | Framework           | CSS Strategy                   |
-| ------------------ | ------------------- | ------------------------------ |
-| `@mono/ui-mui`     | MUI Material        | Emotion + CSS Variables        |
-| `@mono/ui-mantine` | Mantine             | CSS Modules + PostCSS          |
-| `@mono/ui-radix`   | Radix Themes        | Static CSS + Custom Properties |
-| `@mono/ui-lit`     | Lit + React Wrapper | Inline Styles                  |
+| Package            | Framework           | CSS Strategy                                                         |
+| ------------------ | ------------------- | -------------------------------------------------------------------- |
+| `@mono/ui-mui`     | MUI Material        | Vanilla Extract for layout (`sx` banned); Emotion inside MUI widgets |
+| `@mono/ui-mantine` | Mantine             | CSS Modules + PostCSS + VE theme classes                             |
+| `@mono/ui-radix`   | Radix Themes        | CSS Variables + VE theme classes                                     |
+| `@mono/ui-lit`     | Lit + React Wrapper | Shadow DOM CSS custom properties                                     |
 
 ## Usage
 

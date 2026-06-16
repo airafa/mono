@@ -1,6 +1,6 @@
 import { Spinner, Text } from '@radix-ui/themes';
 import type { ReactElement } from 'react';
-import type { ListComponent, ListProps } from '@wsl-ad/ui-contracts';
+import type { ListComponent, ListProps } from '@mono/ui-contracts';
 
 function List<T>({
   items,

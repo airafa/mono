@@ -15,7 +15,7 @@ import type {
   CheckboxProps,
   RadioGroupProps,
   TextAreaProps,
-} from '@wsl-ad/ui-contracts';
+} from '@mono/ui-contracts';
 
 export function Form({
   onSubmit,

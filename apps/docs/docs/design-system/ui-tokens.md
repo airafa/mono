@@ -1,6 +1,6 @@
-# `@wsl-ad/ui-tokens` — Design Token API
+# `@mono/ui-tokens` — Design Token API
 
-The canonical token package for the WSL-AD design system. All color, spacing, elevation, motion,
+The canonical token package for the mono design system. All color, spacing, elevation, motion,
 and radius values used across UI variants must be sourced from this package.
 
 ## Installation
@@ -8,7 +8,7 @@ and radius values used across UI variants must be sourced from this package.
 This package is a workspace dependency — no install needed in the monorepo. Add to `dependencies`:
 
 ```json
-"@wsl-ad/ui-tokens": "workspace:*"
+"@mono/ui-tokens": "workspace:*"
 ```
 
 ## Token Tree
@@ -16,7 +16,7 @@ This package is a workspace dependency — no install needed in the monorepo. Ad
 Exported as `tokens` (light-mode defaults) and `colorDark` (dark overrides):
 
 ```ts
-import { tokens, colorDark } from '@wsl-ad/ui-tokens';
+import { tokens, colorDark } from '@mono/ui-tokens';
 
 tokens.color.primary; // '#268bd2'  Solarized Blue → M3 primary
 tokens.color.surface; // '#fdf6e3'  Solarized Base3
@@ -42,14 +42,14 @@ tokens.radius.md; // '8px'
 Three pre-built theme classes for CSS custom property propagation:
 
 ```ts
-import { vars, lightThemeClass, darkThemeClass, expressiveThemeClass } from '@wsl-ad/ui-tokens';
+import { vars, lightThemeClass, darkThemeClass, expressiveThemeClass } from '@mono/ui-tokens';
 ```
 
 Apply the class on your root element to activate all CSS vars:
 
 ```tsx
 // In an AppShell component (built with VE Vite plugin):
-import { lightThemeClass, darkThemeClass, expressiveThemeClass } from '@wsl-ad/ui-tokens';
+import { lightThemeClass, darkThemeClass, expressiveThemeClass } from '@mono/ui-tokens';
 
 const veClass =
   themeMode === 'dark'
@@ -77,8 +77,8 @@ const veClass =
 ## Density Recipe
 
 ```ts
-import { densityRecipe } from '@wsl-ad/ui-tokens';
-import type { DensityVariant } from '@wsl-ad/ui-tokens';
+import { densityRecipe } from '@mono/ui-tokens';
+import type { DensityVariant } from '@mono/ui-tokens';
 
 // In a *.css.ts or *.tsx (with VE plugin configured):
 const cls = densityRecipe({ density: 'comfortable' }); // default
@@ -95,7 +95,7 @@ const cls = densityRecipe({ density: 'spacious' });
 ## Motion Recipe
 
 ```ts
-import { motionRecipe } from '@wsl-ad/ui-tokens';
+import { motionRecipe } from '@mono/ui-tokens';
 
 const animated = motionRecipe({ reduced: false }); // default
 const noMotion = motionRecipe({ reduced: true }); // transition: none
@@ -106,8 +106,8 @@ Use `reduced: true` when `prefers-reduced-motion: reduce` is detected.
 ## Layout Sprinkles
 
 ```ts
-import { sprinkles } from '@wsl-ad/ui-tokens';
-import type { Sprinkles } from '@wsl-ad/ui-tokens';
+import { sprinkles } from '@mono/ui-tokens';
+import type { Sprinkles } from '@mono/ui-tokens';
 
 const cls = sprinkles({
   display: 'flex',

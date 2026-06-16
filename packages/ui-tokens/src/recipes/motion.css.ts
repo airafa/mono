@@ -6,7 +6,7 @@
  * is detected at the consumer level).
  *
  * Usage:
- *   import { motionRecipe } from '@wsl-ad/ui-tokens';
+ *   import { motionRecipe } from '@mono/ui-tokens';
  *   const animated = motionRecipe({ reduced: false });
  *   const still    = motionRecipe({ reduced: true });
  */

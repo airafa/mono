@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/ui-lit",
+  "name": "@mono/ui-lit",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -16,9 +16,9 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@wsl-ad/app-shell": "workspace:*",
-    "@wsl-ad/ui-contracts": "workspace:*",
-    "@wsl-ad/ui-tokens": "workspace:*",
+    "@mono/app-shell": "workspace:*",
+    "@mono/ui-contracts": "workspace:*",
+    "@mono/ui-tokens": "workspace:*",
     "lit": "*",
     "react": "*",
     "react-dom": "*"

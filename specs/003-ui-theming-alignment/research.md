@@ -93,7 +93,7 @@
 **Pattern**:
 ```ts
 // packages/ui-mantine/src/appShell/contract.typetest.ts
-import type { AppShellComponent } from '@wsl-ad/ui-contracts';
+import type { AppShellComponent } from '@mono/ui-contracts';
 import { AppShell } from './index';
 
 // Type assertion: AppShell satisfies the AppShellComponent contract
@@ -128,9 +128,9 @@ void _;
 
 ## R-006: App Shell Interface Migration Strategy
 
-**Question**: How do existing consumers update from `@wsl-ad/app-shell` to `@wsl-ad/ui-contracts`?
+**Question**: How do existing consumers update from `@mono/app-shell` to `@mono/ui-contracts`?
 
-**Affected imports** (all import `AppShellProps` from `@wsl-ad/app-shell`):
+**Affected imports** (all import `AppShellProps` from `@mono/app-shell`):
 - 4 variant `AppShell.tsx` components
 - 4 variant test files (import `Logo`, `FlightInfrastructuresIcon`, `MissionsIcon` — NOT contracts, these stay in `app-shell`)
 - 4 Storybook story files
@@ -140,13 +140,13 @@ void _;
 **Migration approach** (two-micro-task pattern):
 1. **Micro-task A (refactoring)**: Create `ui-contracts`, move interface definitions there. Add a re-export shim in `packages/app-shell/src/index.ts`:
    ```ts
-   export type { AppShellProps, AppShellNavItem, AppShellComponent } from '@wsl-ad/ui-contracts';
+   export type { AppShellProps, AppShellNavItem, AppShellComponent } from '@mono/ui-contracts';
    ```
    All existing consumers continue working. Zero breakage.
 
-2. **Micro-task B (refactoring)**: Update all consumer imports from `@wsl-ad/app-shell` to `@wsl-ad/ui-contracts`. Remove the re-export shim from `app-shell`. Validate with `pnpm build`.
+2. **Micro-task B (refactoring)**: Update all consumer imports from `@mono/app-shell` to `@mono/ui-contracts`. Remove the re-export shim from `app-shell`. Validate with `pnpm build`.
 
-**Non-migrated imports**: `Logo`, `FlightInfrastructuresIcon`, `MissionsIcon`, `registerEnvironment`, `resolveEnvironmentId`, `EnvironmentConfig`, platform capabilities — these all stay in `@wsl-ad/app-shell` and are NOT affected.
+**Non-migrated imports**: `Logo`, `FlightInfrastructuresIcon`, `MissionsIcon`, `registerEnvironment`, `resolveEnvironmentId`, `EnvironmentConfig`, platform capabilities — these all stay in `@mono/app-shell` and are NOT affected.
 
 ---
 
@@ -156,7 +156,7 @@ void _;
 
 ```text
 packages/ui-tokens/
-├── package.json          # @wsl-ad/ui-tokens, devDep: @vanilla-extract/css, @vanilla-extract/vite-plugin
+├── package.json          # @mono/ui-tokens, devDep: @vanilla-extract/css, @vanilla-extract/vite-plugin
 ├── tsconfig.json
 ├── vite.config.ts        # includes vanillaExtractPlugin()
 ├── src/
@@ -181,7 +181,7 @@ packages/ui-tokens/
 
 ```text
 packages/ui-contracts/
-├── package.json          # @wsl-ad/ui-contracts, peerDeps: react
+├── package.json          # @mono/ui-contracts, peerDeps: react
 ├── tsconfig.json
 ├── src/
 │   ├── index.ts          # barrel: re-exports all interfaces
@@ -201,7 +201,7 @@ packages/ui-contracts/
 
 ## R-009: Placeholder Package Retirement Verification
 
-**Confirmed**: `packages/ui-list/src/index.ts`, `packages/ui-forms/src/index.ts`, `packages/ui-form-controls/src/index.ts` are all doc-comment-only barrel files with no exports. No production code references `@wsl-ad/ui-list`, `@wsl-ad/ui-forms`, or `@wsl-ad/ui-form-controls` in any import statement. Retirement requires:
+**Confirmed**: `packages/ui-list/src/index.ts`, `packages/ui-forms/src/index.ts`, `packages/ui-form-controls/src/index.ts` are all doc-comment-only barrel files with no exports. No production code references `@mono/ui-list`, `@mono/ui-forms`, or `@mono/ui-form-controls` in any import statement. Retirement requires:
 1. Remove the three `packages/` directories
 2. Remove their entries from `pnpm-workspace.yaml` (if present)
 3. Remove their `tsconfig.base.json` path aliases (if present)

@@ -23,7 +23,7 @@ Every page object must define:
 
 ```typescript
 import type { Page, Locator } from '@playwright/test';
-import { createPageObject } from '@wsl-ad/test-utils';
+import { createPageObject } from '@mono/test-utils';
 
 export function createLoginFormPageObject(page: Page) {
   const base = createPageObject(page, '[data-testid="login-form"]');

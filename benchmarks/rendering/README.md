@@ -21,7 +21,7 @@ No baseline measurements recorded yet. Record baseline after initial UI componen
 
 ```bash
 # When benchmark suite is implemented:
-# pnpm --filter @wsl-ad/benchmarks-rendering test
+# pnpm --filter @mono/benchmarks-rendering test
 ```
 
 ## Evidence Requirements

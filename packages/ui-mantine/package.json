@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/ui-mantine",
+  "name": "@mono/ui-mantine",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -18,9 +18,9 @@
   "dependencies": {
     "@mantine/core": "*",
     "@mantine/hooks": "*",
-    "@wsl-ad/app-shell": "workspace:*",
-    "@wsl-ad/ui-contracts": "workspace:*",
-    "@wsl-ad/ui-tokens": "workspace:*",
+    "@mono/app-shell": "workspace:*",
+    "@mono/ui-contracts": "workspace:*",
+    "@mono/ui-tokens": "workspace:*",
     "react": "*",
     "react-dom": "*"
   },

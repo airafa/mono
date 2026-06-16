@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/ui-mui",
+  "name": "@mono/ui-mui",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -21,9 +21,9 @@
     "@mui/icons-material": "*",
     "@mui/material": "*",
     "@vanilla-extract/css": "^1.20.1",
-    "@wsl-ad/app-shell": "workspace:*",
-    "@wsl-ad/ui-contracts": "workspace:*",
-    "@wsl-ad/ui-tokens": "workspace:*",
+    "@mono/app-shell": "workspace:*",
+    "@mono/ui-contracts": "workspace:*",
+    "@mono/ui-tokens": "workspace:*",
     "react": "*",
     "react-dom": "*"
   },

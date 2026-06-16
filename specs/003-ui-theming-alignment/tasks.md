@@ -20,13 +20,13 @@
 
 **Purpose**: Scaffold the two new packages (`ui-tokens`, `ui-contracts`) and wire them into the Nx workspace so all downstream phases can reference them.
 
-- [X] T001 Create `packages/ui-tokens/` directory structure per [plan.md Project Structure](plan.md) and add `package.json` (`@wsl-ad/ui-tokens`) with `@vanilla-extract/css`, `@vanilla-extract/vite-plugin`, `@vanilla-extract/recipes`, `@vanilla-extract/sprinkles` as dependencies in `packages/ui-tokens/package.json`
+- [X] T001 Create `packages/ui-tokens/` directory structure per [plan.md Project Structure](plan.md) and add `package.json` (`@mono/ui-tokens`) with `@vanilla-extract/css`, `@vanilla-extract/vite-plugin`, `@vanilla-extract/recipes`, `@vanilla-extract/sprinkles` as dependencies in `packages/ui-tokens/package.json`
 - [X] T002 Add `packages/ui-tokens/tsconfig.json` extending `tsconfig.base.json` with `"moduleResolution": "bundler"` and `"composite": true`
 - [X] T003 Add `packages/ui-tokens/vite.config.ts` registering `vanillaExtractPlugin()` from `@vanilla-extract/vite-plugin`
 - [X] T004 Add `packages/ui-tokens/vitest.config.ts` extending the workspace vitest config
-- [X] T005 [P] Create `packages/ui-contracts/` directory structure and add `package.json` (`@wsl-ad/ui-contracts`) with zero runtime dependencies in `packages/ui-contracts/package.json`
+- [X] T005 [P] Create `packages/ui-contracts/` directory structure and add `package.json` (`@mono/ui-contracts`) with zero runtime dependencies in `packages/ui-contracts/package.json`
 - [X] T006 [P] Add `packages/ui-contracts/tsconfig.json` extending `tsconfig.base.json`
-- [X] T007 Register both new packages in `pnpm-workspace.yaml` (if not auto-discovered) and add path aliases `@wsl-ad/ui-tokens` and `@wsl-ad/ui-contracts` to `tsconfig.base.json`
+- [X] T007 Register both new packages in `pnpm-workspace.yaml` (if not auto-discovered) and add path aliases `@mono/ui-tokens` and `@mono/ui-contracts` to `tsconfig.base.json`
 
 ---
 
@@ -46,20 +46,20 @@
 - [X] T015 [P] Author `packages/ui-contracts/src/index.ts` barrel re-exporting all contracts
 - [X] T016 Run `pnpm -r build` scoped to `ui-tokens` and `ui-contracts`; fix any TypeScript errors before proceeding
 
-**Checkpoint**: `@wsl-ad/ui-tokens` and `@wsl-ad/ui-contracts` build cleanly — US1–US6 can now start.
+**Checkpoint**: `@mono/ui-tokens` and `@mono/ui-contracts` build cleanly — US1–US6 can now start.
 
 ---
 
 ## Phase 3: User Story 1 — Centralized Design Token Consumption (P1) 🎯 MVP
 
-**Goal**: All four variants import tokens from `@wsl-ad/ui-tokens` and their theme files use canonical values for color, spacing, typography, elevation, motion, and radius.
+**Goal**: All four variants import tokens from `@mono/ui-tokens` and their theme files use canonical values for color, spacing, typography, elevation, motion, and radius.
 
 **Independent Test**: Change `tokens.color.primary` in `packages/ui-tokens/src/tokens.ts`; rebuild all variants; confirm all four render the new color without any per-variant file edit.
 
-- [X] T017 [US1] Add `@wsl-ad/ui-tokens` as a dependency in `packages/ui-mantine/package.json` and register `vanillaExtractPlugin()` in `packages/ui-mantine/vite.config.ts` (if not already present)
-- [X] T018 [P] [US1] Add `@wsl-ad/ui-tokens` dependency and `vanillaExtractPlugin()` to `packages/ui-mui/package.json` and `packages/ui-mui/vite.config.ts`
-- [X] T019 [P] [US1] Add `@wsl-ad/ui-tokens` dependency and `vanillaExtractPlugin()` to `packages/ui-radix/package.json` and `packages/ui-radix/vite.config.ts`
-- [X] T020 [P] [US1] Add `@wsl-ad/ui-tokens` dependency to `packages/ui-lit/package.json` (no VE plugin — Lit uses shadow DOM)
+- [X] T017 [US1] Add `@mono/ui-tokens` as a dependency in `packages/ui-mantine/package.json` and register `vanillaExtractPlugin()` in `packages/ui-mantine/vite.config.ts` (if not already present)
+- [X] T018 [P] [US1] Add `@mono/ui-tokens` dependency and `vanillaExtractPlugin()` to `packages/ui-mui/package.json` and `packages/ui-mui/vite.config.ts`
+- [X] T019 [P] [US1] Add `@mono/ui-tokens` dependency and `vanillaExtractPlugin()` to `packages/ui-radix/package.json` and `packages/ui-radix/vite.config.ts`
+- [X] T020 [P] [US1] Add `@mono/ui-tokens` dependency to `packages/ui-lit/package.json` (no VE plugin — Lit uses shadow DOM)
 - [X] T021 [US1] Author `packages/ui-mantine/src/token-adapter.ts` — `buildMantineTheme(themeMode)` mapping canonical tokens to `MantineThemeOverride`; handles `'light'`, `'dark'`, `'expressive'` branches per [contracts/variant-adapter-contract.md](contracts/variant-adapter-contract.md)
 - [X] T022 [P] [US1] Author `packages/ui-mui/src/token-adapter.ts` — `buildMuiTheme(themeMode)` mapping tokens to `ThemeOptions`; handles all three modes
 - [X] T023 [P] [US1] Author `packages/ui-radix/src/token-adapter.ts` — `buildRadixThemeProps(themeMode)` returning `<Theme>` props; handles all three modes
@@ -75,14 +75,14 @@
 
 ## Phase 4: User Story 2 — UI Contracts Package for Shared Interfaces (P2)
 
-**Goal**: All 20 consumers of `AppShellProps` import from `@wsl-ad/ui-contracts`. `app-shell` contracts are removed; a re-export shim bridges the migration.
+**Goal**: All 20 consumers of `AppShellProps` import from `@mono/ui-contracts`. `app-shell` contracts are removed; a re-export shim bridges the migration.
 
-**Independent Test**: After T031–T037, `grep -r "@wsl-ad/app-shell" --include="*.ts" --include="*.tsx"` returns only the shim itself and non-contract exports (Logo, icons, env).
+**Independent Test**: After T031–T037, `grep -r "@mono/app-shell" --include="*.ts" --include="*.tsx"` returns only the shim itself and non-contract exports (Logo, icons, env).
 
-- [X] T031 [US2] Add re-export shim to `packages/app-shell/src/index.ts`: `export type { AppShellNavItem, AppShellProps, AppShellComponent } from '@wsl-ad/ui-contracts'`
+- [X] T031 [US2] Add re-export shim to `packages/app-shell/src/index.ts`: `export type { AppShellNavItem, AppShellProps, AppShellComponent } from '@mono/ui-contracts'`
 - [X] T032 [US2] Verify all existing consumers compile with the shim in place — run `pnpm tsc -p tsconfig.base.json --noEmit`
-- [X] T036 [P] [US2] **⚠️ Must run before T033** — Add `@wsl-ad/ui-contracts` dependency to `packages/ui-mantine/package.json`, `packages/ui-mui/package.json`, `packages/ui-radix/package.json`, `packages/ui-lit/package.json`, `apps/web/package.json`, `apps/storybook/package.json`; run `pnpm install`
-- [X] T033 [US2] Update all 20 import sites to import directly from `@wsl-ad/ui-contracts` instead of `@wsl-ad/app-shell`:
+- [X] T036 [P] [US2] **⚠️ Must run before T033** — Add `@mono/ui-contracts` dependency to `packages/ui-mantine/package.json`, `packages/ui-mui/package.json`, `packages/ui-radix/package.json`, `packages/ui-lit/package.json`, `apps/web/package.json`, `apps/storybook/package.json`; run `pnpm install`
+- [X] T033 [US2] Update all 20 import sites to import directly from `@mono/ui-contracts` instead of `@mono/app-shell`:
   - `packages/ui-mantine/src/appShell/`
   - `packages/ui-mui/src/appShell/`
   - `packages/ui-radix/src/appShell/`
@@ -101,12 +101,12 @@
 
 **Goal**: Placeholder packages `ui-list`, `ui-forms`, `ui-form-controls` removed from workspace. Each active variant has stub list/form implementations satisfying `ui-contracts` interfaces.
 
-**Independent Test**: `pnpm ls --depth 0` does not list `@wsl-ad/ui-list`, `@wsl-ad/ui-forms`, or `@wsl-ad/ui-form-controls`. `pnpm test` passes for all variants.
+**Independent Test**: `pnpm ls --depth 0` does not list `@mono/ui-list`, `@mono/ui-forms`, or `@mono/ui-form-controls`. `pnpm test` passes for all variants.
 
 - [X] T038 [US3] Confirm placeholder packages have zero production consumers: run `grep -r "ui-list\|ui-forms\|ui-form-controls" --include="*.ts" --include="*.tsx" --include="*.json" -l` (expected: only their own `package.json`)
 - [X] T039 [US3] Remove `packages/ui-list`, `packages/ui-forms`, `packages/ui-form-controls` from `pnpm-workspace.yaml` and delete all three directories
 - [X] T040 [US3] Run `pnpm install` to update lockfile after package removal; run `pnpm -r build` to confirm no dangling references
-- [X] T041 [US3] Create `packages/ui-mantine/src/list/index.ts` — Mantine `List` component stub satisfying `ListComponent` from `@wsl-ad/ui-contracts`
+- [X] T041 [US3] Create `packages/ui-mantine/src/list/index.ts` — Mantine `List` component stub satisfying `ListComponent` from `@mono/ui-contracts`
 - [X] T042 [P] [US3] Create `packages/ui-mantine/src/forms/index.ts` — Mantine `Form` + `TextInput` + `Select` + `Checkbox` + `RadioGroup` + `TextArea` stubs satisfying their respective contracts
 - [X] T043 [P] [US3] Create `packages/ui-mui/src/list/index.ts` and `packages/ui-mui/src/forms/index.ts` — MUI component stubs satisfying contracts
 - [X] T044 [P] [US3] Create `packages/ui-radix/src/list/index.ts` and `packages/ui-radix/src/forms/index.ts` — Radix UI Themes component stubs satisfying contracts
@@ -136,7 +136,7 @@
 
 ## Phase 7: User Story 4 — Vanilla Extract for Cross-Cutting Styles (P3)
 
-**Goal**: `densityRecipe`, `motionRecipe`, and `sprinkles` are available from `@wsl-ad/ui-tokens` and usable in any variant `.css.ts` file.
+**Goal**: `densityRecipe`, `motionRecipe`, and `sprinkles` are available from `@mono/ui-tokens` and usable in any variant `.css.ts` file.
 
 **Independent Test**: In `packages/ui-mantine`, import `densityRecipe`; apply `densityRecipe({ density: 'compact' })`; verify the built CSS contains a static class name and no `<style>` injection at runtime.
 
@@ -171,7 +171,7 @@
 - [X] T069 [P] Add Playwright test in `apps/web/` for LTR/RTL theme switching: assert logical property CSS on list items and form inputs when `dir="rtl"` is set on `<html>`
 - [X] T070 [P] Add Playwright test for `?theme=expressive` URL param: assert `data-theme="expressive"`, `border-radius ≥ 16px`, gradient header background for MUI variant (representative smoke test)
 - [X] T071 [P] Add Storybook stories in `apps/storybook/stories/` for `lightThemeClass`, `darkThemeClass`, `expressiveThemeClass` applied on the MUI AppShell (visual regression baseline)
-- [X] T072 Update `apps/docs/` VitePress documentation: add pages for `@wsl-ad/ui-tokens` API and `@wsl-ad/ui-contracts` interfaces
+- [X] T072 Update `apps/docs/` VitePress documentation: add pages for `@mono/ui-tokens` API and `@mono/ui-contracts` interfaces
 
 ---
 

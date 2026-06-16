@@ -32,7 +32,7 @@ export default tseslint.config(
         {
           selector: 'JSXAttribute[name.name="sx"]',
           message:
-            'The `sx` prop is disallowed in @wsl-ad/ui-mui. Use Vanilla Extract (.css.ts), recipes, or sprinkles from @wsl-ad/ui-tokens instead.',
+            'The `sx` prop is disallowed in @mono/ui-mui. Use Vanilla Extract (.css.ts), recipes, or sprinkles from @mono/ui-tokens instead.',
         },
       ],
     },

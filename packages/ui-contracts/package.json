@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/ui-contracts",
+  "name": "@mono/ui-contracts",
   "version": "0.0.0",
   "private": true,
   "type": "module",

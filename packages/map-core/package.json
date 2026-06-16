@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/map-core",
+  "name": "@mono/map-core",
   "version": "0.0.0",
   "private": true,
   "type": "module",

@@ -66,7 +66,7 @@ export class AppShellPageObject {
 
   /** Get the logo element */
   getLogo(): Locator {
-    return this.page.getByLabel('WSL-AD Logo');
+    return this.page.getByLabel('mono Logo');
   }
 
   /** Get the main navigation landmark */

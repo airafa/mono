@@ -13,7 +13,7 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'pnpm --filter @wsl-ad/web dev --port 4173',
+    command: 'pnpm --filter @mono/web dev --port 4173',
     port: 4173,
     reuseExistingServer: !process.env.CI,
   },

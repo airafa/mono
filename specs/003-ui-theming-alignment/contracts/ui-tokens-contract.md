@@ -1,4 +1,4 @@
-# Contract: `@wsl-ad/ui-tokens`
+# Contract: `@mono/ui-tokens`
 
 **Package**: `packages/ui-tokens`
 **Version target**: 1.0.0 (new package)
@@ -8,7 +8,7 @@
 
 ## Public API Surface
 
-### Named exports from `@wsl-ad/ui-tokens`
+### Named exports from `@mono/ui-tokens`
 
 | Export               | Type                              | Description |
 |----------------------|-----------------------------------|-------------|

@@ -27,7 +27,7 @@
 - [X] T004 [P] Create packages/ui-mantine/package.json (with `"exports": { ".": "./src/index.ts", "./appShell": "./src/appShell/index.ts" }`), packages/ui-mantine/tsconfig.json, packages/ui-mantine/vitest.config.ts (environment: jsdom), and packages/ui-mantine/postcss.config.cjs with Mantine dependencies
 - [X] T005 [P] Create packages/ui-radix/package.json (with `"exports": { ".": "./src/index.ts", "./appShell": "./src/appShell/index.ts" }`), packages/ui-radix/tsconfig.json, and packages/ui-radix/vitest.config.ts (environment: jsdom) with Radix Themes dependencies
 - [X] T006 [P] Create packages/ui-lit/package.json (with `"exports": { ".": "./src/index.ts", "./appShell": "./src/appShell/index.ts" }`), packages/ui-lit/tsconfig.json, and packages/ui-lit/vitest.config.ts (environment: jsdom) with Lit dependencies (Note: `@lit/react` was later removed in V002 — the React wrapper uses plain React, not createComponent)
-- [X] T007 Run pnpm install to resolve all new package dependencies and verify `tsc --noEmit` passes with new @wsl-ad/ui-* references
+- [X] T007 Run pnpm install to resolve all new package dependencies and verify `tsc --noEmit` passes with new @mono/ui-* references
 - [X] T008 Create apps/web/.env with VITE_UI_VARIANT=mui default configuration
 - [X] T009 Implement variant loader in apps/web/src/config/variant-loader.ts with dynamic import routing
 
@@ -66,7 +66,7 @@
 - [X] T018 [P] [US4] Create MUI theme configuration with cssVariables in packages/ui-mui/src/appShell/theme.ts
 - [X] T019 [US4] Implement MUI AppShell component (top bar, sidebar, content area) in packages/ui-mui/src/appShell/AppShell.tsx
 - [X] T020 [US4] Export AppShell from packages/ui-mui/src/appShell/index.ts and packages/ui-mui/src/index.ts
-- [X] T021 [US1] Verify variant loader correctly imports @wsl-ad/ui-mui/appShell via dynamic import
+- [X] T021 [US1] Verify variant loader correctly imports @mono/ui-mui/appShell via dynamic import
 
 **Checkpoint**: MUI variant fully functional — `/?ui=mui` renders correct layout. This is the MVP.
 

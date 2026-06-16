@@ -37,21 +37,21 @@ pnpm format
 ### Web Application
 
 ```bash
-pnpm --filter @wsl-ad/web dev
+pnpm --filter @mono/web dev
 # Opens at http://localhost:5173
 ```
 
 ### Documentation
 
 ```bash
-pnpm --filter @wsl-ad/docs dev
+pnpm --filter @mono/docs dev
 # Opens VitePress dev server
 ```
 
 ### Storybook
 
 ```bash
-pnpm --filter @wsl-ad/storybook dev
+pnpm --filter @mono/storybook dev
 # Opens at http://localhost:6006
 ```
 
@@ -68,13 +68,13 @@ pnpm --filter @wsl-ad/storybook dev
 ### Run tests for a specific package
 
 ```bash
-pnpm --filter @wsl-ad/<package-name> test
+pnpm --filter @mono/<package-name> test
 ```
 
 ### Type-check a specific package
 
 ```bash
-pnpm --filter @wsl-ad/<package-name> typecheck
+pnpm --filter @mono/<package-name> typecheck
 ```
 
 ## Validation

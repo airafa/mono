@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
-import { AppShellPageObject } from '@wsl-ad/test-utils/page-objects';
+import { AppShellPageObject } from '@mono/test-utils/page-objects';
 
 /**
  * Visual consistency tests across all 4 UI variants (T077 / SC-011).

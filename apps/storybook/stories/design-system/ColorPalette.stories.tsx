@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { tokens } from '@mono/ui-tokens';
 
 // ─── helpers ─────────────────────────────────────────────────────────────────
 

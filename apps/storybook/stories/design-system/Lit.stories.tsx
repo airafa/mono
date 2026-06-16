@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AppShell } from '@wsl-ad/ui-lit/appShell';
-import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@wsl-ad/app-shell';
-import type { AppShellProps } from '@wsl-ad/ui-contracts';
-import { getLitTokenProperties } from '@wsl-ad/ui-lit/token-adapter';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { AppShell } from '@mono/ui-lit/appShell';
+import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@mono/app-shell';
+import type { AppShellProps } from '@mono/ui-contracts';
+import { getLitTokenProperties } from '@mono/ui-lit/token-adapter';
+import { tokens } from '@mono/ui-tokens';
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -242,7 +242,7 @@ function LitDesignSystem({ themeMode }: { themeMode: 'light' | 'dark' | 'express
       {/* ── OVERRIDES ── */}
       {sectionTitle('How to override per variant')}
       {code(`// packages/ui-lit/src/token-adapter.ts
-import { tokens, expressiveOverrides } from '@wsl-ad/ui-tokens';
+import { tokens, expressiveOverrides } from '@mono/ui-tokens';
 
 export function getLitTokenProperties(mode: ThemeMode): CssPropertyMap {
   const color = mode === 'dark' ? tokens.colorDark : tokens.color;

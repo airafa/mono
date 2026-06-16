@@ -1,6 +1,6 @@
-# @wsl-ad/test-utils
+# @mono/test-utils
 
-Shared testing utilities for the WSL-AD frontend monorepo.
+Shared testing utilities for the mono frontend monorepo.
 
 ## Contents
 
@@ -10,7 +10,7 @@ Shared testing utilities for the WSL-AD frontend monorepo.
 ## Usage
 
 ```typescript
-import { createPageObject } from '@wsl-ad/test-utils';
+import { createPageObject } from '@mono/test-utils';
 ```
 
 ## Conventions

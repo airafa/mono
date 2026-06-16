@@ -154,7 +154,7 @@ As a user, I see a consistent app shell layout across all variants: a single row
 - The web app (`apps/web`) is the host application that loads the selected variant via the shared interface.
 - Vite is the bundler and dev server; environment variables use `VITE_` prefix.
 - React is the primary framework for the web app; the Lit variant will use a thin React wrapper for integration.
-- The `@wsl-ad/i18n` package already supports RTL direction detection for inline-start positioning.
+- The `@mono/i18n` package already supports RTL direction detection for inline-start positioning.
 - Storybook is configured in `apps/storybook` and can render components from workspace packages.
 - Lighthouse measurements are performed via `lighthouse@13.3.0` CLI installed as a workspace dev dependency. Run `pnpm lighthouse` to audit all variants or `pnpm lighthouse --variant mui` for a single one. Reports are saved to `benchmarks/rendering/lighthouse/`.
 - Bundle size measurement uses the Vite build output.

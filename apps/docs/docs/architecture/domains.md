@@ -2,7 +2,7 @@
 
 ## Overview
 
-The WSL-AD frontend monorepo is organized into distinct architecture domains, each with clear ownership boundaries and responsibilities.
+The mono frontend monorepo is organized into distinct architecture domains, each with clear ownership boundaries and responsibilities.
 
 ## Apps
 

@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/release-tools",
+  "name": "@mono/release-tools",
   "version": "0.0.0",
   "private": true,
   "type": "module",

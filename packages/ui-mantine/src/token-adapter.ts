@@ -1,7 +1,7 @@
 /**
  * Mantine token adapter.
  *
- * Maps `@wsl-ad/ui-tokens` canonical values → `MantineThemeOverride`.
+ * Maps `@mono/ui-tokens` canonical values → `MantineThemeOverride`.
  * Handles all three theme modes: 'light', 'dark', 'expressive'.
  *
  * Expressive mode: applies expressiveOverrides (heavier radius, kinetic motion,
@@ -11,7 +11,7 @@
  */
 import { createTheme } from '@mantine/core';
 import type { MantineThemeOverride } from '@mantine/core';
-import { tokens, expressiveOverrides } from '@wsl-ad/ui-tokens';
+import { tokens, expressiveOverrides } from '@mono/ui-tokens';
 
 type ThemeMode = 'light' | 'dark' | 'expressive';
 

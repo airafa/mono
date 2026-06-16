@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { AppShellPageObject } from '@wsl-ad/test-utils/page-objects';
+import { AppShellPageObject } from '@mono/test-utils/page-objects';
 
 /**
  * RTL / LTR layout direction tests (T069)

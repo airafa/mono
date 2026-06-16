@@ -78,7 +78,7 @@ DESIGN.md                            # Root-level: Google DESIGN.md format (YAML
 ```text
 packages/
 ├── ui-tokens/                        # NEW — canonical design token source
-│   ├── package.json                  # @wsl-ad/ui-tokens
+│   ├── package.json                  # @mono/ui-tokens
 │   ├── tsconfig.json
 │   ├── vitest.config.ts
 │   └── src/
@@ -96,7 +96,7 @@ packages/
 │           └── tokens.typetest.ts    # satisfies TokenTree shape test
 │
 ├── ui-contracts/                     # NEW — shared TypeScript interface contracts
-│   ├── package.json                  # @wsl-ad/ui-contracts
+│   ├── package.json                  # @mono/ui-contracts
 │   ├── tsconfig.json
 │   └── src/
 │       ├── index.ts                  # barrel

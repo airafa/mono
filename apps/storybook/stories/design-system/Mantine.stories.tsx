@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
-import { AppShell } from '@wsl-ad/ui-mantine/appShell';
-import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@wsl-ad/app-shell';
-import type { AppShellProps } from '@wsl-ad/ui-contracts';
-import { buildMantineTheme } from '@wsl-ad/ui-mantine/token-adapter';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { AppShell } from '@mono/ui-mantine/appShell';
+import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@mono/app-shell';
+import type { AppShellProps } from '@mono/ui-contracts';
+import { buildMantineTheme } from '@mono/ui-mantine/token-adapter';
+import { tokens } from '@mono/ui-tokens';
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -228,7 +228,7 @@ function MantineDesignSystem({ themeMode }: { themeMode: 'light' | 'dark' | 'exp
         {sectionTitle('How to override per variant')}
         {code(`// packages/ui-mantine/src/token-adapter.ts
 import { createTheme } from '@mantine/core';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { tokens } from '@mono/ui-tokens';
 
 export function buildMantineTheme(mode: ThemeMode): MantineThemeOverride {
   return createTheme({

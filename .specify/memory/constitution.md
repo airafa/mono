@@ -17,7 +17,7 @@ Sync Impact Report
         - None
 -->
 
-# WSL-AD Frontend Monorepo Constitution
+# mono Frontend Monorepo Constitution
 
 ## Core Principles
 
@@ -41,28 +41,28 @@ component guidance, usage constraints, and examples are discoverable from one
 documentation path.
 
 **Token-first**: All color, spacing, elevation, motion, and radius values MUST be
-sourced from `@wsl-ad/ui-tokens`. Hard-coded literal values (hex colors, pixel
+sourced from `@mono/ui-tokens`. Hard-coded literal values (hex colors, pixel
 margins, etc.) are forbidden in component implementations. The token package owns
 all Solarized+M3 role mappings, Gemini gradient references, Almarai/Rubik font
 scale, and all theming overrides for dark and expressive modes.
 
 **ui-contracts as contract authority**: All shared component interfaces (AppShell,
-List, Form, and their sub-components) MUST be defined in `@wsl-ad/ui-contracts`.
+List, Form, and their sub-components) MUST be defined in `@mono/ui-contracts`.
 No variant package may define its own public interface that duplicates or diverges
-from a contract already in `@wsl-ad/ui-contracts`. Contracts use TypeScript
+from a contract already in `@mono/ui-contracts`. Contracts use TypeScript
 structural typing (`satisfies`) to enforce compatibility at type-test time without
 imposing runtime overhead.
 
 **Variant-owned implementations**: Each UI variant (`ui-mantine`, `ui-mui`,
 `ui-radix`, `ui-lit`) MUST own its full component implementation and MUST satisfy
-the corresponding contract from `@wsl-ad/ui-contracts`. Variant packages MUST NOT
+the corresponding contract from `@mono/ui-contracts`. Variant packages MUST NOT
 re-export other variants' components. Wrapper packages that proxy a single source
 of truth are forbidden; each variant is a self-contained, independently deployable
 component suite.
 
 **Vanilla Extract as cross-cutting layer**: Cross-cutting utility styles (density
 recipes, motion recipes, layout sprinkles) MUST be authored as Vanilla Extract
-`.css.ts` files in `@wsl-ad/ui-tokens`. They MUST reference the VE theme contract
+`.css.ts` files in `@mono/ui-tokens`. They MUST reference the VE theme contract
 (`vars`) so they respond to theme switching automatically. Variant packages that
 consume VE utilities MUST configure `@vanilla-extract/vite-plugin` in both their
 Vite and Vitest configs to ensure build-time CSS generation and test compatibility.
@@ -76,7 +76,7 @@ gradients cannot be interpolated through CSS variables.
 
 **DESIGN.md as agent-readable design reference**: The root-level `DESIGN.md` file
 MUST follow the [Google DESIGN.md specification](https://stitch.withgoogle.com/docs/design-md/specification)
-and MUST be kept in sync with `@wsl-ad/ui-tokens` token values. `DESIGN.md` is the
+and MUST be kept in sync with `@mono/ui-tokens` token values. `DESIGN.md` is the
 authoritative human+AI-readable representation of the design system; `tokens.ts`
 is the authoritative implementation. Changes to token values MUST update both files
 in the same micro-task.

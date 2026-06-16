@@ -2,7 +2,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { AppShell } from '../index.js';
-import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@wsl-ad/app-shell';
+import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@mono/app-shell';
 
 const navItems = [
   { id: 'flight-infra', label: 'Flight Infrastructures', icon: FlightInfrastructuresIcon },
@@ -17,7 +17,7 @@ describe('Mantine AppShell', () => {
       </AppShell>,
     );
     expect(screen.getByTestId('app-shell-topbar')).toBeInTheDocument();
-    expect(screen.getByLabelText('WSL-AD Logo')).toBeInTheDocument();
+    expect(screen.getByLabelText('mono Logo')).toBeInTheDocument();
   });
 
   it('renders sidebar with navigation items', () => {

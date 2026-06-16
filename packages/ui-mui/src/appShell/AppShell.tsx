@@ -1,9 +1,9 @@
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import type { AppShellProps } from '@wsl-ad/ui-contracts';
+import type { AppShellProps } from '@mono/ui-contracts';
 import { buildMuiTheme } from '../token-adapter.js';
-import { lightThemeClass, darkThemeClass, expressiveThemeClass } from '@wsl-ad/ui-tokens';
+import { lightThemeClass, darkThemeClass, expressiveThemeClass } from '@mono/ui-tokens';
 import * as styles from './AppShell.css.js';
 
 export function AppShell({

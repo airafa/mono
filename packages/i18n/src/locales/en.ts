@@ -2,7 +2,7 @@ export const en = {
   locale: 'en',
   direction: 'ltr' as const,
   messages: {
-    'app.title': 'WSL-AD',
+    'app.title': 'mono',
     'app.loading': 'Loading...',
     'app.error': 'An error occurred',
   },

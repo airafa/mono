@@ -1,4 +1,4 @@
-import type { AppShellComponent } from '@wsl-ad/ui-contracts';
+import type { AppShellComponent } from '@mono/ui-contracts';
 
 export type UIVariant = 'mui' | 'mantine' | 'radix' | 'lit';
 export type ThemeMode = 'light' | 'dark' | 'expressive';
@@ -7,10 +7,10 @@ const VALID_VARIANTS: ReadonlySet<string> = new Set(['mui', 'mantine', 'radix', 
 const VALID_THEMES: ReadonlySet<string> = new Set(['light', 'dark', 'expressive']);
 
 const importMap: Record<UIVariant, () => Promise<{ AppShell: AppShellComponent }>> = {
-  mui: () => import('@wsl-ad/ui-mui/appShell'),
-  mantine: () => import('@wsl-ad/ui-mantine/appShell'),
-  radix: () => import('@wsl-ad/ui-radix/appShell'),
-  lit: () => import('@wsl-ad/ui-lit/appShell'),
+  mui: () => import('@mono/ui-mui/appShell'),
+  mantine: () => import('@mono/ui-mantine/appShell'),
+  radix: () => import('@mono/ui-radix/appShell'),
+  lit: () => import('@mono/ui-lit/appShell'),
 };
 
 export function getActiveVariant(): UIVariant {

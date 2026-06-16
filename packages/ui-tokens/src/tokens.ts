@@ -1,5 +1,5 @@
 /**
- * @wsl-ad/ui-tokens — Canonical design token tree
+ * @mono/ui-tokens — Canonical design token tree
  *
  * Color sources:
  *   - Solarized palette (Ethan Schoonover v1.0.0)

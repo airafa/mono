@@ -1,14 +1,14 @@
 /**
  * Radix UI Themes token adapter.
  *
- * Maps `@wsl-ad/ui-tokens` canonical values → Radix `<Theme>` props.
+ * Maps `@mono/ui-tokens` canonical values → Radix `<Theme>` props.
  * Handles all three theme modes: 'light', 'dark', 'expressive'.
  *
  * Expressive mode uses `radius="full"` to signal Gemini circle language.
  * Gradient surfaces are applied via `data-theme="expressive"` CSS attribute
  * selectors on the shell root — not via Radix theme props.
  */
-import { tokens, expressiveOverrides } from '@wsl-ad/ui-tokens';
+import { tokens, expressiveOverrides } from '@mono/ui-tokens';
 
 type ThemeMode = 'light' | 'dark' | 'expressive';
 

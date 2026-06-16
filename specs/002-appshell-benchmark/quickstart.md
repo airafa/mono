@@ -16,7 +16,7 @@ pnpm install
 
 ```bash
 # Default variant (from .env VITE_UI_VARIANT, defaults to 'mui')
-pnpm --filter @wsl-ad/web dev
+pnpm --filter @mono/web dev
 
 # Override variant via URL
 # http://localhost:5173/?ui=mantine
@@ -28,19 +28,19 @@ pnpm --filter @wsl-ad/web dev
 
 ```bash
 # All variant tests
-pnpm --filter "@wsl-ad/ui-*" test
+pnpm --filter "@mono/ui-*" test
 
 # Specific variant
-pnpm --filter @wsl-ad/ui-mui test
-pnpm --filter @wsl-ad/ui-mantine test
-pnpm --filter @wsl-ad/ui-radix test
-pnpm --filter @wsl-ad/ui-lit test
+pnpm --filter @mono/ui-mui test
+pnpm --filter @mono/ui-mantine test
+pnpm --filter @mono/ui-radix test
+pnpm --filter @mono/ui-lit test
 ```
 
 ## Storybook
 
 ```bash
-pnpm --filter @wsl-ad/storybook dev
+pnpm --filter @mono/storybook dev
 ```
 
 All 4 variants have stories under "App Shell / {MUI,Mantine,Radix,Lit}".
@@ -49,7 +49,7 @@ All 4 variants have stories under "App Shell / {MUI,Mantine,Radix,Lit}".
 
 ```bash
 # Build the web app (will code-split per variant)
-pnpm --filter @wsl-ad/web build
+pnpm --filter @mono/web build
 
 # Measure bundle sizes
 ls -la apps/web/dist/assets/*.js | awk '{print $5, $9}'
@@ -61,7 +61,7 @@ Lighthouse CLI is installed as a workspace dev dependency (`lighthouse@13.3.0`).
 
 ```bash
 # Start the dev server on a fixed port
-pnpm --filter @wsl-ad/web dev --port 4173
+pnpm --filter @mono/web dev --port 4173
 
 # Run Lighthouse for all 4 variants
 pnpm lighthouse

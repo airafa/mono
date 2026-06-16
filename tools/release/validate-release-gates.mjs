@@ -41,12 +41,12 @@ const gates = [
     appliesTo: ['dev-integration', 'staging', 'production'],
     check: () => {
       const lint = runCommand(
-        'pnpm --filter "@wsl-ad/ui-*" --filter @wsl-ad/app-shell --filter @wsl-ad/web lint',
+        'pnpm --filter "@mono/ui-*" --filter @mono/app-shell --filter @mono/web lint',
       );
       const typecheck = runCommand(
-        'pnpm --filter "@wsl-ad/ui-*" --filter @wsl-ad/app-shell --filter @wsl-ad/web typecheck',
+        'pnpm --filter "@mono/ui-*" --filter @mono/app-shell --filter @mono/web typecheck',
       );
-      const test = runCommand('pnpm --filter "@wsl-ad/ui-*" --filter @wsl-ad/web test');
+      const test = runCommand('pnpm --filter "@mono/ui-*" --filter @mono/web test');
       const stylelint = runCommand('pnpm exec stylelint "**/*.css"');
       return lint && typecheck && test && stylelint ? 'pass' : 'fail';
     },

@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/web",
+  "name": "@mono/web",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -17,18 +17,18 @@
     "@types/react-dom": "^19.2.3",
     "@vanilla-extract/vite-plugin": "*",
     "@vitejs/plugin-react": "^6.0.2",
-    "@wsl-ad/test-utils": "workspace:*",
+    "@mono/test-utils": "workspace:*",
     "jsdom": "*",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "vite": "^8.0.14"
   },
   "dependencies": {
-    "@wsl-ad/app-shell": "workspace:*",
-    "@wsl-ad/ui-contracts": "workspace:*",
-    "@wsl-ad/ui-lit": "workspace:*",
-    "@wsl-ad/ui-mantine": "workspace:*",
-    "@wsl-ad/ui-mui": "workspace:*",
-    "@wsl-ad/ui-radix": "workspace:*"
+    "@mono/app-shell": "workspace:*",
+    "@mono/ui-contracts": "workspace:*",
+    "@mono/ui-lit": "workspace:*",
+    "@mono/ui-mantine": "workspace:*",
+    "@mono/ui-mui": "workspace:*",
+    "@mono/ui-radix": "workspace:*"
   }
 }

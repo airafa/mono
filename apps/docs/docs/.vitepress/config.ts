@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
-  title: 'WSL-AD',
-  description: 'Architecture documentation for the WSL-AD frontend monorepo',
+  title: 'mono',
+  description: 'Architecture documentation for the mono frontend monorepo',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },

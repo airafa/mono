@@ -14,7 +14,7 @@
  * gradients cannot be interpolated through CSS custom properties.
  */
 import { style } from '@vanilla-extract/css';
-import { vars } from '@wsl-ad/ui-tokens';
+import { vars } from '@mono/ui-tokens';
 
 const TOPBAR_HEIGHT = '64px';
 const SIDEBAR_WIDTH = '60px';

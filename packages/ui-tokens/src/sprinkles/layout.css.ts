@@ -12,7 +12,7 @@
  * Shorthands: padding (paddingBlock + paddingInline), margin (marginBlock + marginInline)
  *
  * Usage:
- *   import { sprinkles } from '@wsl-ad/ui-tokens';
+ *   import { sprinkles } from '@mono/ui-tokens';
  *   const cls = sprinkles({ display: 'flex', gap: 'md', paddingBlock: { mobile: 'sm', desktop: 'lg' } });
  */
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';

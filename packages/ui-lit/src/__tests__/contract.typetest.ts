@@ -1,5 +1,5 @@
 import { describe, it } from 'vitest';
-import type { AppShellComponent, ListComponent, FormComponent } from '@wsl-ad/ui-contracts';
+import type { AppShellComponent, ListComponent, FormComponent } from '@mono/ui-contracts';
 import { AppShell } from '../appShell/index.js';
 import { List } from '../list/index.js';
 import { Form } from '../forms/index.js';

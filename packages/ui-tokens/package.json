@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/ui-tokens",
+  "name": "@mono/ui-tokens",
   "version": "0.0.0",
   "private": true,
   "type": "module",

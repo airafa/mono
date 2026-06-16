@@ -1,5 +1,5 @@
 /**
- * Vanilla Extract theme contract for @wsl-ad/ui-tokens.
+ * Vanilla Extract theme contract for @mono/ui-tokens.
  *
  * Provides CSS custom property references (`vars`) for all token branches,
  * and three pre-built theme classes:
@@ -13,7 +13,7 @@
  * gradients cannot be interpolated through CSS custom properties.
  *
  * Usage in *.css.ts files:
- *   import { vars, lightThemeClass } from '@wsl-ad/ui-tokens/theme.css.js';
+ *   import { vars, lightThemeClass } from '@mono/ui-tokens/theme.css.js';
  *   const myStyle = style({ color: vars.color.primary });
  */
 import { createThemeContract, createTheme } from '@vanilla-extract/css';

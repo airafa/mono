@@ -1,4 +1,4 @@
-import type { EnvironmentConfig } from '@wsl-ad/app-shell';
+import type { EnvironmentConfig } from '@mono/app-shell';
 
 const config: EnvironmentConfig = {
   id: 'dev-integration',

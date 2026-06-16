@@ -37,12 +37,12 @@ The expressive theme is **URL-param only** — it does not appear in the in-app 
 
 | Package               | Purpose |
 |-----------------------|---------|
-| `@wsl-ad/ui-tokens`   | Canonical design tokens (Solarized + M3 color roles; Almarai/Rubik typography; Gemini gradient language). Vanilla Extract theme classes, recipes, and sprinkles. |
-| `@wsl-ad/ui-contracts`| TypeScript interface contracts for all shared UI components (`AppShellProps`, `ListProps`, `FormProps`, …). |
-| `@wsl-ad/ui-mantine`  | Mantine-based AppShell + components implementing ui-contracts using Mantine's native styling. |
-| `@wsl-ad/ui-mui`      | MUI-based AppShell + components. |
-| `@wsl-ad/ui-radix`    | Radix UI Themes-based AppShell + components. |
-| `@wsl-ad/ui-lit`      | Lit web component-based AppShell (shadow DOM). |
+| `@mono/ui-tokens`   | Canonical design tokens (Solarized + M3 color roles; Almarai/Rubik typography; Gemini gradient language). Vanilla Extract theme classes, recipes, and sprinkles. |
+| `@mono/ui-contracts`| TypeScript interface contracts for all shared UI components (`AppShellProps`, `ListProps`, `FormProps`, …). |
+| `@mono/ui-mantine`  | Mantine-based AppShell + components implementing ui-contracts using Mantine's native styling. |
+| `@mono/ui-mui`      | MUI-based AppShell + components. |
+| `@mono/ui-radix`    | Radix UI Themes-based AppShell + components. |
+| `@mono/ui-lit`      | Lit web component-based AppShell (shadow DOM). |
 
 ---
 
@@ -52,7 +52,7 @@ The expressive theme is **URL-param only** — it does not appear in the in-app 
 
 ```ts
 // packages/ui-mantine/src/header.css.ts
-import { vars } from '@wsl-ad/ui-tokens';
+import { vars } from '@mono/ui-tokens';
 import { style } from '@vanilla-extract/css';
 
 export const header = style({
@@ -67,7 +67,7 @@ export const header = style({
 ### In a variant `.ts` / `.tsx` file (plain token values)
 
 ```ts
-import { tokens, darkTokens, expressiveOverrides } from '@wsl-ad/ui-tokens';
+import { tokens, darkTokens, expressiveOverrides } from '@mono/ui-tokens';
 
 // Build a Mantine theme from canonical tokens
 const baseRadius = tokens.radius.md;                   // '12px'
@@ -77,7 +77,7 @@ const expressiveRadius = expressiveOverrides.radius.md; // '16px'
 ### Using density recipes
 
 ```ts
-import { densityRecipe } from '@wsl-ad/ui-tokens';
+import { densityRecipe } from '@mono/ui-tokens';
 
 // In component JSX
 <div className={densityRecipe({ density: 'compact' })}>...</div>
@@ -87,7 +87,7 @@ import { densityRecipe } from '@wsl-ad/ui-tokens';
 ### Using responsive sprinkles
 
 ```ts
-import { sprinkles } from '@wsl-ad/ui-tokens';
+import { sprinkles } from '@mono/ui-tokens';
 
 <div className={sprinkles({ display: { mobile: 'block', tablet: 'flex' }, gap: 'md' })}>
 ```
@@ -101,7 +101,7 @@ import { sprinkles } from '@wsl-ad/ui-tokens';
 2. **In the variant's `token-adapter.ts`**, add the `'expressive'` branch:
 
    ```ts
-   import { expressiveOverrides, lightThemeClass, expressiveThemeClass } from '@wsl-ad/ui-tokens';
+   import { expressiveOverrides, lightThemeClass, expressiveThemeClass } from '@mono/ui-tokens';
 
    if (themeMode === 'expressive') {
      // Apply VE classes
@@ -115,7 +115,7 @@ import { sprinkles } from '@wsl-ad/ui-tokens';
 3. **Write a contract type-test** in `src/contract.typetest.ts`:
 
    ```ts
-   import type { AppShellComponent } from '@wsl-ad/ui-contracts';
+   import type { AppShellComponent } from '@mono/ui-contracts';
    import { AppShell } from './appShell/index.js';
    const _: AppShellComponent = AppShell satisfies AppShellComponent;
    ```

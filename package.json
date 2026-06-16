@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/monorepo",
+  "name": "@mono/monorepo",
   "private": true,
   "type": "module",
   "engines": {
@@ -7,10 +7,10 @@
   },
   "packageManager": "pnpm@10.33.2",
   "scripts": {
-    "dev": "nx run @wsl-ad/web:dev",
-    "dev:docs": "nx run @wsl-ad/docs:dev",
-    "dev:storybook": "nx run @wsl-ad/storybook:dev",
-    "dev:all": "nx run-many -t dev --projects=@wsl-ad/web,@wsl-ad/docs --parallel",
+    "dev": "nx run @mono/web:dev",
+    "dev:docs": "nx run @mono/docs:dev",
+    "dev:storybook": "nx run @mono/storybook:dev",
+    "dev:all": "nx run-many -t dev --projects=@mono/web,@mono/docs --parallel",
     "build": "nx run-many -t build",
     "lint": "nx run-many -t lint",
     "format": "prettier --check .",

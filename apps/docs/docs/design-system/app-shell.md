@@ -1,13 +1,13 @@
 # App Shell
 
-The app shell provides the top-level layout frame for the WSL-AD web application: a fixed top bar, an inline-start sidebar with icon navigation, and a flexible main content area.
+The app shell provides the top-level layout frame for the mono web application: a fixed top bar, an inline-start sidebar with icon navigation, and a flexible main content area.
 
 ## Contract
 
 All app shell variants implement a shared TypeScript interface:
 
 ```typescript
-import type { AppShellComponent, AppShellProps } from '@wsl-ad/app-shell';
+import type { AppShellComponent, AppShellProps } from '@mono/app-shell';
 ```
 
 ### `AppShellProps`
@@ -34,16 +34,16 @@ All variants render these `data-testid` attributes:
 - `<nav aria-label="Main navigation">` wraps nav items
 - Each nav button has `aria-label` matching the item label
 - Theme toggle has `aria-label="Toggle theme"`
-- Logo has `aria-label="WSL-AD Logo"`
+- Logo has `aria-label="mono Logo"`
 
 ## Variants
 
-| Package              | Framework           | CSS Strategy                   |
-| -------------------- | ------------------- | ------------------------------ |
-| `@wsl-ad/ui-mui`     | MUI Material        | Emotion + CSS Variables        |
-| `@wsl-ad/ui-mantine` | Mantine             | CSS Modules + PostCSS          |
-| `@wsl-ad/ui-radix`   | Radix Themes        | Static CSS + Custom Properties |
-| `@wsl-ad/ui-lit`     | Lit + React Wrapper | Inline Styles                  |
+| Package            | Framework           | CSS Strategy                   |
+| ------------------ | ------------------- | ------------------------------ |
+| `@mono/ui-mui`     | MUI Material        | Emotion + CSS Variables        |
+| `@mono/ui-mantine` | Mantine             | CSS Modules + PostCSS          |
+| `@mono/ui-radix`   | Radix Themes        | Static CSS + Custom Properties |
+| `@mono/ui-lit`     | Lit + React Wrapper | Inline Styles                  |
 
 ## Usage
 

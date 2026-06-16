@@ -1,9 +1,9 @@
 import { Theme } from '@radix-ui/themes';
-import type { AppShellProps } from '@wsl-ad/ui-contracts';
+import type { AppShellProps } from '@mono/ui-contracts';
 import '@radix-ui/themes/styles.css';
 import './AppShell.css';
 import { buildRadixThemeProps } from '../token-adapter.js';
-import { lightThemeClass, darkThemeClass, expressiveThemeClass } from '@wsl-ad/ui-tokens';
+import { lightThemeClass, darkThemeClass, expressiveThemeClass } from '@mono/ui-tokens';
 
 export function AppShell({
   logo: LogoComponent,

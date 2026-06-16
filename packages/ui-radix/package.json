@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/ui-radix",
+  "name": "@mono/ui-radix",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -18,9 +18,9 @@
   "dependencies": {
     "@radix-ui/react-icons": "*",
     "@radix-ui/themes": "*",
-    "@wsl-ad/app-shell": "workspace:*",
-    "@wsl-ad/ui-contracts": "workspace:*",
-    "@wsl-ad/ui-tokens": "workspace:*",
+    "@mono/app-shell": "workspace:*",
+    "@mono/ui-contracts": "workspace:*",
+    "@mono/ui-tokens": "workspace:*",
     "react": "*",
     "react-dom": "*"
   },

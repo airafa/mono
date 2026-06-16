@@ -7,7 +7,7 @@ import type {
   CheckboxProps,
   RadioGroupProps,
   TextAreaProps,
-} from '@wsl-ad/ui-contracts';
+} from '@mono/ui-contracts';
 
 const inputStyle: CSSProperties = {
   padding: '8px 12px',

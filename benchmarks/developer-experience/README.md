@@ -24,7 +24,7 @@ No baseline measurements recorded yet. Record baseline after workspace setup is 
 
 ```bash
 # When benchmark suite is implemented:
-# pnpm --filter @wsl-ad/benchmarks-dx test
+# pnpm --filter @mono/benchmarks-dx test
 ```
 
 ## Evidence Requirements

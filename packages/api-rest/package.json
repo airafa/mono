@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/api-rest",
+  "name": "@mono/api-rest",
   "version": "0.0.0",
   "private": true,
   "type": "module",

@@ -1,5 +1,5 @@
 /**
- * @wsl-ad/app-shell
+ * @mono/app-shell
  *
  * Application framing, shared navigation, environment configuration,
  * and platform capability management.

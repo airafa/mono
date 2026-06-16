@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { tokens } from '@mono/ui-tokens';
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -307,7 +307,7 @@ function TypographyShowcase() {
         >
           Usage — Token API
         </h2>
-        {code(`import { tokens } from '@wsl-ad/ui-tokens';
+        {code(`import { tokens } from '@mono/ui-tokens';
 
 // In any component:
 const style = {
@@ -348,7 +348,7 @@ const headingStyle = {
             </h3>
             {code(`// packages/ui-mantine/src/token-adapter.ts
 import { createTheme } from '@mantine/core';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { tokens } from '@mono/ui-tokens';
 
 createTheme({
   fontFamily: tokens.font.body.family,        // default: Rubik
@@ -375,7 +375,7 @@ createTheme({
             </h3>
             {code(`// packages/ui-mui/src/token-adapter.ts
 import { createTheme } from '@mui/material/styles';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { tokens } from '@mono/ui-tokens';
 
 createTheme({
   typography: {

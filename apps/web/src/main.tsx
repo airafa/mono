@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { registerEnvironment, resolveEnvironmentId } from '@wsl-ad/app-shell';
-import type { EnvironmentConfig } from '@wsl-ad/app-shell';
+import { registerEnvironment, resolveEnvironmentId } from '@mono/app-shell';
+import type { EnvironmentConfig } from '@mono/app-shell';
 import { App } from './App.js';
 
 import localConfig from './config/local.js';

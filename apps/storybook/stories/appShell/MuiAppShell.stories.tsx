@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { AppShell } from '@wsl-ad/ui-mui/appShell';
-import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@wsl-ad/app-shell';
-import type { AppShellProps } from '@wsl-ad/ui-contracts';
+import { AppShell } from '@mono/ui-mui/appShell';
+import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@mono/app-shell';
+import type { AppShellProps } from '@mono/ui-contracts';
 
 const navItems: AppShellProps['navItems'] = [
   { id: 'flight-infra', label: 'Flight Infrastructures', icon: FlightInfrastructuresIcon },

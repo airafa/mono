@@ -1,4 +1,4 @@
-# WSL-AD Frontend Monorepo
+# mono Frontend Monorepo
 
 Enterprise frontend monorepo built with pnpm, Nx, Vite, React, and TypeScript.
 
@@ -60,13 +60,13 @@ tools/
 
 ```bash
 # Start the web app
-pnpm --filter @wsl-ad/web dev
+pnpm --filter @mono/web dev
 
 # Start documentation
-pnpm --filter @wsl-ad/docs dev
+pnpm --filter @mono/docs dev
 
 # Start Storybook
-pnpm --filter @wsl-ad/storybook dev
+pnpm --filter @mono/storybook dev
 ```
 
 ## Architecture

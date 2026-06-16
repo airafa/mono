@@ -18,8 +18,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@wsl-ad/ui-tokens": ["./packages/ui-tokens/src/index.ts"],
-      "@wsl-ad/ui-contracts": ["./packages/ui-contracts/src/index.ts"]
+      "@mono/ui-tokens": ["./packages/ui-tokens/src/index.ts"],
+      "@mono/ui-contracts": ["./packages/ui-contracts/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "dist", "build", "coverage"]

@@ -1,6 +1,6 @@
 ---
 version: alpha
-name: WSL-AD Solarized M3
+name: mono Solarized M3
 description: >
   Solarized palette mapped to Material Design 3 semantic roles with Gemini-inspired
   expressive gradients. Dual-script typography (Almarai for headlines, Rubik for body)
@@ -205,7 +205,7 @@ components:
     padding: 8px
 ---
 
-# WSL-AD Design System
+# mono Design System
 
 ## Overview
 
@@ -361,7 +361,7 @@ to heavier rounding for warmth and playful optimism.
 ## Components
 
 All four UI variants (MUI, Mantine, Radix, Lit) implement identical component contracts
-from `@wsl-ad/ui-contracts`. Each variant maps canonical design tokens through its own
+from `@mono/ui-contracts`. Each variant maps canonical design tokens through its own
 theme adapter, ensuring visual consistency across implementations.
 
 ### App Shell

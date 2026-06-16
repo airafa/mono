@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
-import { AppShell } from '@wsl-ad/ui-radix/appShell';
-import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@wsl-ad/app-shell';
-import type { AppShellProps } from '@wsl-ad/ui-contracts';
-import { buildRadixThemeProps } from '@wsl-ad/ui-radix/token-adapter';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { AppShell } from '@mono/ui-radix/appShell';
+import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@mono/app-shell';
+import type { AppShellProps } from '@mono/ui-contracts';
+import { buildRadixThemeProps } from '@mono/ui-radix/token-adapter';
+import { tokens } from '@mono/ui-tokens';
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 

@@ -1,5 +1,5 @@
 {
-  "name": "@wsl-ad/i18n",
+  "name": "@mono/i18n",
   "version": "0.0.0",
   "private": true,
   "type": "module",

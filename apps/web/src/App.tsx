@@ -1,7 +1,7 @@
 import { Component, lazy, Suspense, useCallback, useState } from 'react';
 import type { ReactNode } from 'react';
-import type { AppShellProps } from '@wsl-ad/ui-contracts';
-import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@wsl-ad/app-shell';
+import type { AppShellProps } from '@mono/ui-contracts';
+import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@mono/app-shell';
 import { getActiveVariant, getActiveTheme, loadVariant } from './config/variant-loader.js';
 
 class VariantErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null }> {
@@ -54,7 +54,7 @@ export function App() {
           themeMode={themeMode}
           onThemeToggle={toggleTheme}
         >
-          <h1>WSL-AD</h1>
+          <h1>mono</h1>
           <p>Active UI variant: {getActiveVariant()}</p>
         </LazyAppShell>
       </Suspense>

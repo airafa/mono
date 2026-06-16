@@ -1,8 +1,8 @@
 import { List as MantineList, Loader, Text } from '@mantine/core';
 import type { ReactElement } from 'react';
-import type { ListComponent, ListProps } from '@wsl-ad/ui-contracts';
-import { densityRecipe } from '@wsl-ad/ui-tokens';
-import type { DensityVariant } from '@wsl-ad/ui-tokens';
+import type { ListComponent, ListProps } from '@mono/ui-contracts';
+import { densityRecipe } from '@mono/ui-tokens';
+import type { DensityVariant } from '@mono/ui-tokens';
 
 type ListWithDensityProps<T> = ListProps<T> & { density?: DensityVariant };
 

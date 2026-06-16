@@ -2,7 +2,7 @@
 
 **Applies to**: `packages/ui-mantine`, `packages/ui-mui`, `packages/ui-radix`, `packages/ui-lit`
 
-Each variant owns a `src/token-adapter.ts` module that maps `@wsl-ad/ui-tokens` values to its native theming API and handles all three theme modes: `'light'`, `'dark'`, and `'expressive'`.
+Each variant owns a `src/token-adapter.ts` module that maps `@mono/ui-tokens` values to its native theming API and handles all three theme modes: `'light'`, `'dark'`, and `'expressive'`.
 
 ---
 
@@ -29,7 +29,7 @@ interface VariantTokenAdapter {
 ### Mantine (`packages/ui-mantine/src/token-adapter.ts`)
 
 ```ts
-import { tokens, darkTokens, expressiveOverrides, lightThemeClass, darkThemeClass, expressiveThemeClass } from '@wsl-ad/ui-tokens';
+import { tokens, darkTokens, expressiveOverrides, lightThemeClass, darkThemeClass, expressiveThemeClass } from '@mono/ui-tokens';
 import type { MantineThemeOverride } from '@mantine/core';
 
 export function buildMantineTheme(themeMode: 'light' | 'dark' | 'expressive'): MantineThemeOverride {

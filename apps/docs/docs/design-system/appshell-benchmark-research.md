@@ -67,7 +67,7 @@ The host app reads the variant selection from three sources (in priority order):
 2. `VITE_UI_VARIANT` environment variable
 3. Hardcoded default: `'mui'`
 
-Then calls `import('@wsl-ad/ui-{variant}/appShell')` to lazy-load only the selected variant.
+Then calls `import('@mono/ui-{variant}/appShell')` to lazy-load only the selected variant.
 
 **Why not separate builds?** Four separate Vite configs (one per variant) were considered but rejected as over-engineering. Dynamic imports achieve the same chunk isolation with simpler DX and a single build command.
 

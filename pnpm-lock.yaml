@@ -77,25 +77,25 @@ importers:
       '@radix-ui/themes':
         specifier: '*'
         version: 3.3.0(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@wsl-ad/app-shell':
+      '@mono/app-shell':
         specifier: workspace:*
         version: link:../../packages/app-shell
-      '@wsl-ad/ui-contracts':
+      '@mono/ui-contracts':
         specifier: workspace:*
         version: link:../../packages/ui-contracts
-      '@wsl-ad/ui-lit':
+      '@mono/ui-lit':
         specifier: workspace:*
         version: link:../../packages/ui-lit
-      '@wsl-ad/ui-mantine':
+      '@mono/ui-mantine':
         specifier: workspace:*
         version: link:../../packages/ui-mantine
-      '@wsl-ad/ui-mui':
+      '@mono/ui-mui':
         specifier: workspace:*
         version: link:../../packages/ui-mui
-      '@wsl-ad/ui-radix':
+      '@mono/ui-radix':
         specifier: workspace:*
         version: link:../../packages/ui-radix
-      '@wsl-ad/ui-tokens':
+      '@mono/ui-tokens':
         specifier: workspace:*
         version: link:../../packages/ui-tokens
       react:
@@ -147,22 +147,22 @@ importers:
 
   apps/web:
     dependencies:
-      '@wsl-ad/app-shell':
+      '@mono/app-shell':
         specifier: workspace:*
         version: link:../../packages/app-shell
-      '@wsl-ad/ui-contracts':
+      '@mono/ui-contracts':
         specifier: workspace:*
         version: link:../../packages/ui-contracts
-      '@wsl-ad/ui-lit':
+      '@mono/ui-lit':
         specifier: workspace:*
         version: link:../../packages/ui-lit
-      '@wsl-ad/ui-mantine':
+      '@mono/ui-mantine':
         specifier: workspace:*
         version: link:../../packages/ui-mantine
-      '@wsl-ad/ui-mui':
+      '@mono/ui-mui':
         specifier: workspace:*
         version: link:../../packages/ui-mui
-      '@wsl-ad/ui-radix':
+      '@mono/ui-radix':
         specifier: workspace:*
         version: link:../../packages/ui-radix
     devDependencies:
@@ -178,7 +178,7 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^6.0.2
         version: 6.0.2(vite@8.0.14(@types/node@25.9.1)(sugarss@5.0.1(postcss@8.5.15))(yaml@2.9.0))
-      '@wsl-ad/test-utils':
+      '@mono/test-utils':
         specifier: workspace:*
         version: link:../../packages/test-utils
       jsdom:
@@ -200,7 +200,7 @@ importers:
 
   packages/app-shell:
     dependencies:
-      '@wsl-ad/ui-contracts':
+      '@mono/ui-contracts':
         specifier: workspace:*
         version: link:../ui-contracts
       react:
@@ -231,13 +231,13 @@ importers:
 
   packages/ui-lit:
     dependencies:
-      '@wsl-ad/app-shell':
+      '@mono/app-shell':
         specifier: workspace:*
         version: link:../app-shell
-      '@wsl-ad/ui-contracts':
+      '@mono/ui-contracts':
         specifier: workspace:*
         version: link:../ui-contracts
-      '@wsl-ad/ui-tokens':
+      '@mono/ui-tokens':
         specifier: workspace:*
         version: link:../ui-tokens
       lit:
@@ -277,13 +277,13 @@ importers:
       '@mantine/hooks':
         specifier: '*'
         version: 9.2.2(react@19.2.6)
-      '@wsl-ad/app-shell':
+      '@mono/app-shell':
         specifier: workspace:*
         version: link:../app-shell
-      '@wsl-ad/ui-contracts':
+      '@mono/ui-contracts':
         specifier: workspace:*
         version: link:../ui-contracts
-      '@wsl-ad/ui-tokens':
+      '@mono/ui-tokens':
         specifier: workspace:*
         version: link:../ui-tokens
       react:
@@ -338,13 +338,13 @@ importers:
       '@vanilla-extract/css':
         specifier: ^1.20.1
         version: 1.20.1(babel-plugin-macros@3.1.0)
-      '@wsl-ad/app-shell':
+      '@mono/app-shell':
         specifier: workspace:*
         version: link:../app-shell
-      '@wsl-ad/ui-contracts':
+      '@mono/ui-contracts':
         specifier: workspace:*
         version: link:../ui-contracts
-      '@wsl-ad/ui-tokens':
+      '@mono/ui-tokens':
         specifier: workspace:*
         version: link:../ui-tokens
       react:
@@ -381,13 +381,13 @@ importers:
       '@radix-ui/themes':
         specifier: '*'
         version: 3.3.0(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@wsl-ad/app-shell':
+      '@mono/app-shell':
         specifier: workspace:*
         version: link:../app-shell
-      '@wsl-ad/ui-contracts':
+      '@mono/ui-contracts':
         specifier: workspace:*
         version: link:../ui-contracts
-      '@wsl-ad/ui-tokens':
+      '@mono/ui-tokens':
         specifier: workspace:*
         version: link:../ui-tokens
       react:

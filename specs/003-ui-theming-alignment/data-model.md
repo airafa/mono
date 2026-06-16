@@ -569,13 +569,13 @@ TextAreaProps extends FormFieldProps
 
 ## 3. Variant Theme Adapter Pattern
 
-Each variant contains a `token-adapter.ts` file that maps `@wsl-ad/ui-tokens` values to its native theming API.
+Each variant contains a `token-adapter.ts` file that maps `@mono/ui-tokens` values to its native theming API.
 
 ### 3.1 Mantine Adapter Pattern
 
 ```
 MantineTokenAdapter
-├── Input: tokens (from @wsl-ad/ui-tokens), themeMode: 'light' | 'dark' | 'expressive'
+├── Input: tokens (from @mono/ui-tokens), themeMode: 'light' | 'dark' | 'expressive'
 └── Output: MantineThemeOverride
     ├── primaryColor: derived from tokens.color.primary
     ├── spacing: mapped from tokens.spacing.*
@@ -589,7 +589,7 @@ MantineTokenAdapter
 
 ```
 MuiTokenAdapter
-├── Input: tokens (from @wsl-ad/ui-tokens), themeMode: 'light' | 'dark' | 'expressive'
+├── Input: tokens (from @mono/ui-tokens), themeMode: 'light' | 'dark' | 'expressive'
 └── Output: ThemeOptions (for createTheme)
     ├── cssVariables: true             (always — for zero-runtime theme switching)
     ├── palette.primary.main: tokens.color.primary
@@ -603,7 +603,7 @@ MuiTokenAdapter
 
 ```
 RadixTokenAdapter
-├── Input: tokens (from @wsl-ad/ui-tokens), themeMode: 'light' | 'dark' | 'expressive'
+├── Input: tokens (from @mono/ui-tokens), themeMode: 'light' | 'dark' | 'expressive'
 └── Output: CSS custom property assignments on <Theme> component
     ├── accentColor: derived from tokens.color.primary
     ├── radius: 'large' when expressive, else mapped from tokens.radius scale
@@ -616,7 +616,7 @@ Note: Radix CSS variables (`--space-*`, `--color-background`, `--gray-*`) have t
 
 ```
 LitTokenAdapter
-├── Input: tokens (from @wsl-ad/ui-tokens), themeMode: 'light' | 'dark' | 'expressive'
+├── Input: tokens (from @mono/ui-tokens), themeMode: 'light' | 'dark' | 'expressive'
 └── Output: CSS custom properties injected on :root or passed via host element attributes
     ├── --shell-bg: tokens.color.surface (light/dark/expressive)
     ├── --shell-surface: tokens.color.surfaceVariant
@@ -635,7 +635,7 @@ Note: Lit's shadow DOM prevents VE class-based application. Tokens reach Lit com
 ```
 ContractTypeTest (per variant, per contract)
 ├── Import: ComponentType from variant (e.g., AppShell from ui-mantine)
-├── Import: ContractType from @wsl-ad/ui-contracts (e.g., AppShellComponent)
+├── Import: ContractType from @mono/ui-contracts (e.g., AppShellComponent)
 └── Assertion: const _: ContractType = ComponentExport; void _;
     - Zero runtime output
     - TypeScript compiler fails the file if contract is violated
@@ -651,15 +651,15 @@ ContractTypeTest (per variant, per contract)
 ```
 State A (current):
   packages/app-shell/src/contracts/app-shell.ts → AppShellProps, AppShellNavItem, AppShellComponent
-  All consumers import from '@wsl-ad/app-shell'
+  All consumers import from '@mono/app-shell'
 
 State B (micro-task MT-01):
   packages/ui-contracts/src/app-shell.ts → AppShellProps, AppShellNavItem, AppShellComponent
-  packages/app-shell/src/contracts/app-shell.ts → re-export shim from '@wsl-ad/ui-contracts'
-  All consumers STILL import from '@wsl-ad/app-shell' (zero breakage)
+  packages/app-shell/src/contracts/app-shell.ts → re-export shim from '@mono/ui-contracts'
+  All consumers STILL import from '@mono/app-shell' (zero breakage)
 
 State C (micro-task MT-02):
-  All consumers updated to import from '@wsl-ad/ui-contracts'
+  All consumers updated to import from '@mono/ui-contracts'
   Re-export shim removed from app-shell
   packages/app-shell/src/contracts/ directory removed
 ```

@@ -1,4 +1,4 @@
-# Contract: `@wsl-ad/ui-contracts`
+# Contract: `@mono/ui-contracts`
 
 **Package**: `packages/ui-contracts`
 **Version target**: 1.0.0 (new package)
@@ -8,7 +8,7 @@
 
 ## Public API Surface
 
-### Named exports from `@wsl-ad/ui-contracts`
+### Named exports from `@mono/ui-contracts`
 
 | Export                  | Category      | Replaces / migrated from |
 |-------------------------|---------------|--------------------------|
@@ -80,16 +80,16 @@ Key accessibility requirements:
 
 ---
 
-## Migration: `@wsl-ad/app-shell` re-export shim
+## Migration: `@mono/app-shell` re-export shim
 
 During migration (Step 1), `packages/app-shell/src/index.ts` adds:
 
 ```ts
-// Migration shim — remove once all consumers update to @wsl-ad/ui-contracts
-export type { AppShellNavItem, AppShellProps, AppShellComponent } from '@wsl-ad/ui-contracts';
+// Migration shim — remove once all consumers update to @mono/ui-contracts
+export type { AppShellNavItem, AppShellProps, AppShellComponent } from '@mono/ui-contracts';
 ```
 
-All 20 existing import sites continue to compile without changes. After all consumers are updated to import directly from `@wsl-ad/ui-contracts`, the shim is removed (Step 2).
+All 20 existing import sites continue to compile without changes. After all consumers are updated to import directly from `@mono/ui-contracts`, the shim is removed (Step 2).
 
 ---
 
@@ -98,7 +98,7 @@ All 20 existing import sites continue to compile without changes. After all cons
 Each variant package MUST contain `src/contract.typetest.ts` (or per-contract files) with:
 
 ```ts
-import type { AppShellComponent } from '@wsl-ad/ui-contracts';
+import type { AppShellComponent } from '@mono/ui-contracts';
 import { AppShell } from './appShell/index.js';
 
 // If this line produces a TypeScript error, the variant does not satisfy the contract.

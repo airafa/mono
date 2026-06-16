@@ -7,7 +7,7 @@ Technology decisions in this project are backed by benchmark data (Constitution 
 ### Bundle Size
 
 ```bash
-pnpm --filter @wsl-ad/web build
+pnpm --filter @mono/web build
 # Check dist/assets/ for per-chunk sizes
 ```
 
@@ -15,7 +15,7 @@ pnpm --filter @wsl-ad/web build
 
 ```bash
 # Start dev server
-pnpm --filter @wsl-ad/web dev --port 4173
+pnpm --filter @mono/web dev --port 4173
 
 # Run Lighthouse for all variants
 pnpm lighthouse

@@ -1,8 +1,8 @@
 import '@mantine/core/styles.css';
 import { MantineProvider, ActionIcon, Tooltip } from '@mantine/core';
-import type { AppShellProps } from '@wsl-ad/ui-contracts';
+import type { AppShellProps } from '@mono/ui-contracts';
 import { buildMantineTheme, getMantineColorScheme } from '../token-adapter.js';
-import { lightThemeClass, darkThemeClass, expressiveThemeClass } from '@wsl-ad/ui-tokens';
+import { lightThemeClass, darkThemeClass, expressiveThemeClass } from '@mono/ui-tokens';
 import classes from './AppShell.module.css';
 
 export function AppShell({

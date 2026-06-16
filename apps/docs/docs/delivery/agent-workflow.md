@@ -2,7 +2,7 @@
 
 ## Overview
 
-The WSL-AD monorepo uses a spec-driven, agent-assisted development lifecycle with four roles and explicit handoff gates.
+The mono monorepo uses a spec-driven, agent-assisted development lifecycle with four roles and explicit handoff gates.
 
 ## Roles
 

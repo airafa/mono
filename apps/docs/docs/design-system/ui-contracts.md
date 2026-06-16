@@ -1,12 +1,12 @@
-# `@wsl-ad/ui-contracts` — Shared Component Interfaces
+# `@mono/ui-contracts` — Shared Component Interfaces
 
-The contract package defines all shared TypeScript interfaces for the WSL-AD component system.
+The contract package defines all shared TypeScript interfaces for the mono component system.
 It has zero runtime dependencies — it is a types-only package.
 
 ## Installation
 
 ```json
-"@wsl-ad/ui-contracts": "workspace:*"
+"@mono/ui-contracts": "workspace:*"
 ```
 
 ## Principle
@@ -17,7 +17,7 @@ at type-check time with no runtime cost:
 
 ```ts
 // In a variant's contract.typetest.ts:
-import type { AppShellComponent, ListComponent, FormComponent } from '@wsl-ad/ui-contracts';
+import type { AppShellComponent, ListComponent, FormComponent } from '@mono/ui-contracts';
 import { AppShell } from '../appShell/index.js';
 import { List } from '../list/index.js';
 import { Form } from '../forms/index.js';
@@ -36,7 +36,7 @@ it('Form satisfies FormComponent', () => {
 ## `AppShellComponent`
 
 ```ts
-import type { AppShellProps, AppShellComponent } from '@wsl-ad/ui-contracts';
+import type { AppShellProps, AppShellComponent } from '@mono/ui-contracts';
 ```
 
 ### `AppShellProps`
@@ -63,7 +63,7 @@ interface AppShellNavItem {
 ## `ListComponent<T>`
 
 ```ts
-import type { ListProps, ListComponent } from '@wsl-ad/ui-contracts';
+import type { ListProps, ListComponent } from '@mono/ui-contracts';
 ```
 
 ### `ListProps<T>`
@@ -87,7 +87,7 @@ import type {
   CheckboxProps,
   RadioGroupProps,
   TextAreaProps,
-} from '@wsl-ad/ui-contracts';
+} from '@mono/ui-contracts';
 ```
 
 | Export          | Description                                         |

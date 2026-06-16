@@ -96,7 +96,7 @@
 
 **Rationale**:
 - Vite automatically code-splits on dynamic `import()` boundaries.
-- The host app (`apps/web`) will have a thin variant resolver that reads `?ui=` param or `VITE_UI_VARIANT` env, then calls `import(`@wsl-ad/ui-${variant}`)` to load only that package.
+- The host app (`apps/web`) will have a thin variant resolver that reads `?ui=` param or `VITE_UI_VARIANT` env, then calls `import(`@mono/ui-${variant}`)` to load only that package.
 - In production build, each variant becomes its own chunk — users download only the active variant's JS+CSS.
 - For maximum isolation: configure Vite to externalize sibling UI packages from each variant's build (they should never cross-import).
 
@@ -108,10 +108,10 @@ const variant = new URLSearchParams(window.location.search).get('ui')
   ?? 'mui';
 
 const modules = {
-  mui: () => import('@wsl-ad/ui-mui/appShell'),
-  mantine: () => import('@wsl-ad/ui-mantine/appShell'),
-  radix: () => import('@wsl-ad/ui-radix/appShell'),
-  lit: () => import('@wsl-ad/ui-lit/appShell'),
+  mui: () => import('@mono/ui-mui/appShell'),
+  mantine: () => import('@mono/ui-mantine/appShell'),
+  radix: () => import('@mono/ui-radix/appShell'),
+  lit: () => import('@mono/ui-lit/appShell'),
 };
 
 export const loadAppShell = modules[variant] ?? modules.mui;

@@ -1,8 +1,8 @@
 ---
 layout: home
-title: WSL-AD Documentation
+title: mono Documentation
 hero:
-  name: WSL-AD
+  name: mono
   text: Frontend Monorepo
   tagline: Architecture, platform readiness, and delivery documentation
   actions:

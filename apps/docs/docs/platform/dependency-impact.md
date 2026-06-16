@@ -8,14 +8,14 @@ Document how missing platform capabilities affect delivery timelines and what br
 
 | Missing Capability     | Affected Packages      | Blocked Work                                  | Severity | Mitigation                                             |
 | ---------------------- | ---------------------- | --------------------------------------------- | -------- | ------------------------------------------------------ |
-| Backend REST owner     | `@wsl-ad/api-rest`     | REST transport implementation                 | Critical | Name backend owner, agree on endpoint catalog          |
-| Backend GraphQL owner  | `@wsl-ad/api-graphql`  | GraphQL schema codegen, client implementation | Critical | Name backend owner, deliver schema + versioning policy |
-| Backend Realtime owner | `@wsl-ad/realtime`     | SignalR hub integration                       | Critical | Name backend owner, deliver hub contract               |
+| Backend REST owner     | `@mono/api-rest`       | REST transport implementation                 | Critical | Name backend owner, agree on endpoint catalog          |
+| Backend GraphQL owner  | `@mono/api-graphql`    | GraphQL schema codegen, client implementation | Critical | Name backend owner, deliver schema + versioning policy |
+| Backend Realtime owner | `@mono/realtime`       | SignalR hub integration                       | Critical | Name backend owner, deliver hub contract               |
 | Auth owner             | All transport packages | Any authenticated API call                    | Critical | Name identity provider and token model                 |
 | CI/CD onboarding       | All apps               | Automated testing and deployment              | High     | Confirm platform ownership, begin pipeline setup       |
 | Secrets management     | Transport packages     | Non-local API integration                     | High     | Confirm secrets system and project onboarding          |
 | Compliance owner       | Release tooling        | Staging and production promotion              | High     | Name compliance owner, confirm applicable controls     |
-| Observability          | `@wsl-ad/app-shell`    | Error tracking, performance monitoring        | Medium   | Confirm logging/metrics/tracing with platform team     |
+| Observability          | `@mono/app-shell`      | Error tracking, performance monitoring        | Medium   | Confirm logging/metrics/tracing with platform team     |
 
 ## Dependency Chain
 

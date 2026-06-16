@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { AppShell } from '@wsl-ad/ui-mui/appShell';
-import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@wsl-ad/app-shell';
-import type { AppShellProps } from '@wsl-ad/ui-contracts';
-import { buildMuiTheme } from '@wsl-ad/ui-mui/token-adapter';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { AppShell } from '@mono/ui-mui/appShell';
+import { Logo, FlightInfrastructuresIcon, MissionsIcon } from '@mono/app-shell';
+import type { AppShellProps } from '@mono/ui-contracts';
+import { buildMuiTheme } from '@mono/ui-mui/token-adapter';
+import { tokens } from '@mono/ui-tokens';
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -191,7 +191,7 @@ function MuiDesignSystem({ themeMode }: { themeMode: 'light' | 'dark' | 'express
         {sectionTitle('How to override per variant')}
         {code(`// packages/ui-mui/src/token-adapter.ts
 import { createTheme } from '@mui/material/styles';
-import { tokens } from '@wsl-ad/ui-tokens';
+import { tokens } from '@mono/ui-tokens';
 
 createTheme({
   // ── Font override ─────────────────────────────────────────────

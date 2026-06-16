@@ -10,7 +10,7 @@
  * also receives `data-theme="expressive"` so shadow-root CSS can apply gradient
  * surfaces via `:host([data-theme='expressive']) .header { background: ... }`.
  */
-import { tokens, expressiveOverrides } from '@wsl-ad/ui-tokens';
+import { tokens, expressiveOverrides } from '@mono/ui-tokens';
 
 type ThemeMode = 'light' | 'dark' | 'expressive';
 

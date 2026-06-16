@@ -1,5 +1,5 @@
 /**
- * @wsl-ad/i18n
+ * @mono/i18n
  *
  * Internationalization support for English and Hebrew,
  * including RTL/LTR direction handling.

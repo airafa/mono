@@ -21,7 +21,7 @@ No baseline measurements recorded yet. Record baseline after realtime transport 
 
 ```bash
 # When benchmark suite is implemented:
-# pnpm --filter @wsl-ad/benchmarks-realtime test
+# pnpm --filter @mono/benchmarks-realtime test
 ```
 
 ## Evidence Requirements

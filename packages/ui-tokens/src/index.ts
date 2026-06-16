@@ -8,7 +8,7 @@ export type { ExpressiveOverrides } from './tokens.expressive.js';
 export { expressiveOverrides } from './tokens.expressive.js';
 
 // Vanilla Extract theme contract and pre-built theme classes
-// Import from '@wsl-ad/ui-tokens' (side-effectful CSS generation at build time)
+// Import from '@mono/ui-tokens' (side-effectful CSS generation at build time)
 export { vars, lightThemeClass, darkThemeClass, expressiveThemeClass } from './theme.css.js';
 
 // Vanilla Extract recipes

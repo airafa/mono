@@ -1,5 +1,5 @@
 /**
- * @wsl-ad/api-graphql
+ * @mono/api-graphql
  *
  * GraphQL transport layer using urql with code generation.
  * Contract-first: implementation blocked until backend owners are named.

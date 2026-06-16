@@ -6,7 +6,7 @@
  * so they respond to light/dark/expressive theme switching automatically.
  *
  * Usage in a variant *.css.ts:
- *   import { densityRecipe } from '@wsl-ad/ui-tokens';
+ *   import { densityRecipe } from '@mono/ui-tokens';
  *   const item = densityRecipe({ density: 'compact' });
  */
 import { recipe } from '@vanilla-extract/recipes';
